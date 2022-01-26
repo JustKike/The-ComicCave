@@ -12,7 +12,6 @@
             <b-nav-item :to="{ name: 'Home' }" exact>Inicio</b-nav-item>
             <b-nav-item :to="{ name: 'Releases' }" exact>Lanzamientos</b-nav-item>
             <b-nav-item :to="{ name: 'Contact' }">Contacto</b-nav-item>
-            <b-nav-item :to="{ name: 'Cards' }">Cards</b-nav-item>
             <b-nav-item :to="{ name: 'About' }">Acerca de</b-nav-item>
           </b-navbar-nav>
 
