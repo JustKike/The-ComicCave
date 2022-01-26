@@ -9,11 +9,11 @@
 
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>
-            <b-nav-item :to="{ name: 'Home' }" exact>Home</b-nav-item>
-            <b-nav-item :to="{ name: 'About' }">About</b-nav-item>
-            <b-nav-item :to="{ name: 'Grid' }">Grid</b-nav-item>
+            <b-nav-item :to="{ name: 'Home' }" exact>Inicio</b-nav-item>
+            <b-nav-item :to="{ name: 'Releases' }" exact>Lanzamientos</b-nav-item>
+            <b-nav-item :to="{ name: 'Contact' }">Contacto</b-nav-item>
             <b-nav-item :to="{ name: 'Cards' }">Cards</b-nav-item>
-            <b-nav-item :to="{ name: 'Form' }">Form</b-nav-item>
+            <b-nav-item :to="{ name: 'About' }">Acerca de</b-nav-item>
           </b-navbar-nav>
 
         </b-collapse>
