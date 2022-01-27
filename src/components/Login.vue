@@ -11,23 +11,22 @@
       >
     </div>
 
-    <b-sidebar
+    <b-sidebar 
       id="example-sidebar"
       title="Sidebar"
       aria-label="Sidebar with custom footer"
-      no-header
-      shadow
+      no-header bg-variant="dark"
     >
       <template #footer="{ hide }">
         <div
-          class="d-flex bg-dark text-light justify-content-between align-items-center px-3 py-2"
+          class="d-flex bg-primary  text-light justify-content-between align-items-center px-3 py-2"
         >
           <strong class="mr-auto">The ComicCave</strong>
           <b-button class="float-right" size="sm" @click="hide">Close</b-button>
         </div>
       </template>
       <div class="px-3 py-2">
-        <b-card class="mt-3" header="Inica Sesion">
+        <b-card class="mt-3" header="Inicia Sesion">
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group
               id="input-group-1"
@@ -76,6 +75,7 @@
 
 <script>
 import Join from "./Join.vue";
+import Cabecera from '@/components/Cabecera.vue';
 export default {
   components: { Join },
   name: "Login",
@@ -108,3 +108,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+.oscuro {
+  background-color: black;
+}
+.shadow{
+  text-shadow: 2px 2px 4px #030000;
+}
+</style>
