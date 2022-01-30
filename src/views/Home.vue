@@ -1,7 +1,11 @@
 <template>
   <div class="home centrado">
+    <div class="container">
     <Cliplogo></Cliplogo>
     <HelloWorld msg="Bienvenido a The ComicCave" />
+    <Search></Search>
+    <Card msg="# 1 Ciencia ficción"  dir="space01.jpg" ></Card>
+    </div>
   </div>
 </template>
 
@@ -10,22 +14,25 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import Cabecera from "@/components/Cabecera.vue";
 import Cliplogo from "@/components/Cliplogo.vue";
+import Search from "@/components/Search.vue";
+import Card from "@/components/Card.vue";
+
 
 export default {
   name: "Home",
   components: {
     HelloWorld,
     Cabecera,
-    Cliplogo
+    Cliplogo,
+    Search,
+    Card
   },
 };
 </script>
 
 <style scoped>
+
 .centrado {
   text-align: center;
-  background-image: url(../assets/fondo1.jpg);
-  width: 100%;
-  height: 100%;
 }
 </style>

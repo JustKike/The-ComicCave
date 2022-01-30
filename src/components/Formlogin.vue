@@ -37,11 +37,6 @@
           v-b-popover.hover.v-danger.top="{ content: msg }"
           title="CUIDADO!"
         ></b-form-input>
-
-        <!-- <b-form-text id="password-help-block"><p class="text-justify">
-            Password must be 8-20 characters long, contain letters and numbers, and must not
-            contain spaces, special characters, or emoji.</p>
-          </b-form-text> -->
       </b-form-group>
       <br />
       <div class="d-flex justify-content-center">
