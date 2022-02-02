@@ -16,7 +16,7 @@
                 shift-v="1.25"
                 aria-hidden="true"
               >
-              </b-icon>Inicio</b-nav-item>
+              </b-icon> Inicio</b-nav-item>
             <b-nav-item :to="{ name: 'Releases' }" exact>Lanzamientos</b-nav-item>
             <b-nav-item :to="{ name: 'Forum' }">Foro</b-nav-item>
             <b-nav-item :to="{ name: 'Contact' }">Contacto</b-nav-item>

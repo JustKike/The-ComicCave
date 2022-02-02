@@ -1,6 +1,6 @@
 <template>
   <div class="cienciaF">
-    <b-container fluid class="p-4 bg-dark m-2">
+    <b-container fluid class="p-4 bg-dark m-2 ">
       <b-row>
         <b-card-group class="cenetered">
           <b-col>
@@ -31,7 +31,7 @@
                 class="button"
                 >Reseñas</b-button
               >
-              <b-modal v-model="modalShow" size="lg">
+              <b-modal v-model="modalShow"  size="lg">
                 <Modal></Modal>
               </b-modal
               >
@@ -134,13 +134,5 @@ header {
 }
 .texto {
   text-align: justify;
-}
-.modal-lg {
-max-width: auto !important;
-}
-
-.modal-dialog {
-max-width: auto !important;
-
 }
 </style>

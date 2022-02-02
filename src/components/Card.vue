@@ -1,15 +1,13 @@
 <template>
-  <div class="Card centrado mt-5 mb-5">
+  <div class="Card centrado m-3">
     <div class="container">
       <b-link :to="{ name: liga }">
-        <b-img
+        <b-card-img
           :src="srcText"
           fluid
-          alt="Responsive image"
-          class="image"
-          width="224"
-          height="48"
-        ></b-img>
+          img-alt="Card Image"
+          class="image" 
+        ></b-card-img>
       </b-link>
       <div class="overlay">{{ msg }}</div>
     </div>
@@ -40,9 +38,6 @@ export default {
 .centrado {
   text-align: center;
 }
-* {
-  box-sizing: border-box;
-}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -53,9 +48,11 @@ export default {
 .container {
   position: relative;
   width: 100%;
-  max-width: 300px;
+  height: auto;
+  max-width: 260px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  padding: 0;
 }
 
 .image {
@@ -70,12 +67,12 @@ export default {
   position: absolute;
   bottom: 0;
   background: rgba(0, 0, 0, 0.61); /* Black see-through */
-  width: 92%;
+  width: 100%;
   transition: 0.5s ease;
   opacity: 0;
   color: rgba(255, 255, 255, 0.212);
-  font-weight: bold;
-  font-size: 27px;
+  font-weight:900;
+  font-size: 25px;
   padding: 20px;
   text-align: center;
   text-decoration-color: overlay;

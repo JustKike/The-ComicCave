@@ -9,7 +9,7 @@
       </b-list-group>
     </div>
     <br>
-    <b-button v-b-modal.modal-prevent-closing>Agregar comentario</b-button>
+    <b-button variant="outline-warning" v-b-modal.modal-prevent-closing>Agregar comentario</b-button>
 
     <b-modal
       id="modal-prevent-closing"
