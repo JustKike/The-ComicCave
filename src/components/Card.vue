@@ -1,9 +1,21 @@
 <template>
-  <div class="Card centrado">
-        <div class="container">
-        <img :src="srcText" alt="Avatar" class="image" width="224" height="48">
-        <div class="overlay">{{ msg }}</div>
-        </div>
+  <div class="Card centrado mt-5 mb-5">
+    <div class="container">
+      <b-link :to="{ name: liga }">
+        <b-img
+          :src="srcText"
+          fluid
+          alt="Responsive image"
+          class="image"
+          width="224"
+          height="48"
+        ></b-img>
+      </b-link>
+      <div class="overlay">{{ msg }}</div>
+    </div>
+    <b-container>
+      <router-view />
+    </b-container>
   </div>
 </template>
 
@@ -11,14 +23,15 @@
 export default {
   name: "Card",
   props: {
-    msg: 'string',
-    dir: 'string'
+    msg: "string",
+    dir: "string",
+    liga: "",
   },
-  computed:{
-      srcText(){
-          return "../assets/"+this.dir;
-      }
-  }
+  computed: {
+    srcText() {
+      return "../img/" + this.dir;
+    },
+  },
 };
 </script>
 
@@ -27,21 +40,22 @@ export default {
 .centrado {
   text-align: center;
 }
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 
 .container {
   position: relative;
-  width: 50%;
+  width: 100%;
   max-width: 300px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  
 }
 
 .image {
@@ -53,20 +67,21 @@ export default {
 }
 
 .overlay {
-  position: absolute; 
-  bottom: 0; 
-  background: rgb(0, 0, 0);
-  background: rgba(255, 20, 145, 0.336); /* Black see-through */
-  color: #f1f1f1; 
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.61); /* Black see-through */
   width: 92%;
-  transition: .5s ease;
-  opacity:0;
-  color: white;
-  font-size: 20px;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.212);
+  font-weight: bold;
+  font-size: 27px;
   padding: 20px;
   text-align: center;
+  text-decoration-color: overlay;
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
 }
 .container:hover .overlay {
-  opacity: 1;
+  opacity: 100%;
 }
 </style>

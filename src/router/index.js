@@ -1,44 +1,50 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [{
-        path: '/',
-        name: 'Home',
+        path: "/",
+        name: "Home",
         component: () =>
-            import ( /* webpackChunkName: "Home" */ '../views/Home.vue')
+            import ( /* webpackChunkName: "Home" */ "../views/Home.vue"),
     },
     {
-        path: '/about',
-        name: 'About',
+        path: "/about",
+        name: "About",
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/About.vue')
+            import ( /* webpackChunkName: "about" */ "../views/About.vue"),
     },
     {
-        path: '/releases',
-        name: 'Releases',
+        path: "/releases",
+        name: "Releases",
         component: () =>
-            import ( /* webpackChunkName: "Releases" */ '../views/Releases.vue')
+            import ( /* webpackChunkName: "Releases" */ "../views/Releases.vue"),
     },
     {
-        path: '/contact',
-        name: 'Contact',
+        path: "/contact",
+        name: "Contact",
         component: () =>
-            import ( /* webpackChunkName: "Contact" */ '../views/Contact.vue')
+            import ( /* webpackChunkName: "Contact" */ "../views/Contact.vue"),
     },
     {
-        path: '/forum',
-        name: 'Forum',
+        path: "/cienciaF",
+        name: "CienciaF",
         component: () =>
-            import ( /* webpackChunkName: "Contact" */ '../views/Forum.vue')
+            import ( /* webpackChunkName: "CienciaF" */ "../views/CienciaF.vue"),
+    },
+    {
+        path: "/forum",
+        name: "Forum",
+        component: () =>
+            import ( /* webpackChunkName: "Forum" */ "../views/Forum.vue"),
     }
-]
+];
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: "history",
     base: process.env.BASE_URL,
-    routes
-})
+    routes,
+});
 
-export default router
+export default router;

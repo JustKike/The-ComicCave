@@ -23,4 +23,23 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+h1 {
+  font-family: "lust-display-didone", serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  width: 100%;
+  letter-spacing: 0.5rem;
+  color: rgb(105, 10, 3);
+  text-shadow: 2px 5px 8px #030000;
+}
+p {
+  font-family: Century Schoolbook, Century Schoolbook L, Georgia, serif;
+  font-size: 30px;
+  text-align: center;
+  margin: 2rem 3rem 0;
+  color: rgb(10, 10, 10);
+  font-weight: 100;
+  text-shadow: 2px 5px 8px #030000;
+}
 </style>

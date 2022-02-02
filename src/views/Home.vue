@@ -1,10 +1,14 @@
 <template>
   <div class="home centrado">
     <div class="container">
-    <Cliplogo></Cliplogo>
-    <HelloWorld msg="Bienvenido a The ComicCave" />
+    <HelloWorld msg="BIENVENIDO A THE COMICCAVE" />
     <Search></Search>
-    <Card msg="# 1 Ciencia ficción"  dir="space01.jpg" ></Card>
+    <b-card-group class=" m-2">
+    <Card msg="# 1 Ciencia ficción"  dir="space01.jpg" liga="CienciaF"></Card>
+    <Card msg="# 2 Horror"  dir="AdventuresIntoDarkness.jpg" ></Card>
+    <Card msg="# 3 Guerra"  dir="GI-Joe.jpg" ></Card> 
+    <Card msg="# 4 Superhéroes"  dir="SuperHeroes.jpg" ></Card>
+    </b-card-group>
     </div>
   </div>
 </template>
