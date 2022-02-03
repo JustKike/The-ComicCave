@@ -4,10 +4,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [{
-        path: "/",
-        name: "Home",
+        path: "/", //ruta a la que nos vamos a dirgir por defecto
+        name: "Home", //el nombre
         component: () =>
-            import ( /* webpackChunkName: "Home" */ "../views/Home.vue"),
+            import ( /* webpackChunkName: "Home" */ "../views/Home.vue"), //importamos vista
     },
     {
         path: "/about",

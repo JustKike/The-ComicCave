@@ -1,5 +1,7 @@
 <template>
+ <!-- Contenedor para Ficha con un scroll-->
   <div id="scrollspy-nested" style="position:relative; height:309px; overflow-y:auto">
+    <!-- Creamos la tabla con los datos del script -->
     <b-table stacked :items="items"></b-table>
   </div>
 </template>
@@ -9,9 +11,10 @@
       name: 'Ficha',
     data() {
       return {
-        // Note `isActive` is left out and will not appear in the rendered table
+        // Tenga en cuenta que `isActive` se omite y no aparecerá en la tabla representada
+        //array de elementos
         items: [
-          { 
+          {  //elementos de la tabla.
               Título_original: 'Sinopsis de EL JUEZ DREDD: LOS ARCHIVOS COMPLETOS Nº 1 (INTEGRAL)', 
               Año: '2019',
               No_de_páginas: '336',

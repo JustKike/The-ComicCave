@@ -1,47 +1,51 @@
 <template>
   <div>
+    <!-- Inciamos el formulario -->
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <!-- Agrupamos los elementos del formulario -->
       <b-form-group
         id="input-group-1"
-        label="Email address:"
+        label="Correo:"
         label-for="input-1"
-        description="We'll never share your email with anyone else."
-      >
+        description="Nunca compartiremos tus datos con nadie más..">
+        <!-- Agregamos input para contraseña -->
         <b-form-input
           id="input-1"
           v-model="form.email"
           type="email"
-          placeholder="Enter email"
+          placeholder="Introduce la contraseña"
           required
         ></b-form-input>
       </b-form-group>
-
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+      <!-- Agregamos etiqueta nombre -->
+      <b-form-group id="input-group-2" label="Nombre:" label-for="input-2">
+        <!-- insertamos input para el nombre -->
         <b-form-input
           id="input-2"
           v-model="form.name"
-          placeholder="Enter name"
+          placeholder="Introduce un nombre"
           required
         ></b-form-input>
       </b-form-group>
-
+      <!-- Agregamos etiqueta contraseña -->
       <b-form-group>
-        <label for="text-password">Password</label>
+        <label for="text-password">Contraseña</label>
+        <!-- Agregamos input para cotraseña -->
         <b-form-input
           type="password"
           id="text-password"
           aria-describedby="password-help-block"
           v-model="form.password"
           required
-          placeholder="Enter password"
-          v-b-popover.hover.v-danger.top="{ content: msg }"
-          title="CUIDADO!"
-        ></b-form-input>
+          placeholder="Introduce la contraseña"
+           v-b-popover.hover.v-danger.top="{ content: msg }"> <!-- Ventana emergente -->
+          </b-form-input>
       </b-form-group>
       <br />
+      <!-- Agregamos contenedor para botones -->
       <div class="d-flex justify-content-center">
-        <b-button type="submit" variant="primary">Submit</b-button> |
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary">Enviar</b-button> |
+        <b-button type="reset" variant="danger">Cancelar</b-button>
       </div>
     </b-form>
   </div>
@@ -68,11 +72,11 @@ export default {
     },
     onReset(event) {
       event.preventDefault();
-      // Reset our form values
+      // Restablece nuestros valores de formulario
       this.form.email = "";
       this.form.name = "";
       this.form.password = "";
-      // Trick to reset/clear native browser form validation state
+      // Truco para restablecer/borrar el estado de validación del formulario del navegador nativo
       this.show = false;
       this.$nextTick(() => {
         this.show = true;

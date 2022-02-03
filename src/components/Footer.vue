@@ -1,6 +1,7 @@
 
 <template>
   <div>
+    <!-- Creamos el Footer -->
       <div class="footer">
         <h1>Esto es un footer</h1>
       </div>
@@ -14,7 +15,7 @@ export default {
 </script>
 
 <style>
-/* CSS Document */
+/* CSS documento */
 .footer{
   bottom: 0;
   width: 100%;
