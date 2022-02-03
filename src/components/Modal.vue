@@ -1,11 +1,11 @@
 <template>
-  <!-- Agreamos un contendor para el modal -->
+  <!-- Agregamos un contendor para el modal -->
   <b-card no-body>
     <!-- Agregamos pestañas -->
     <b-tabs card>
       <!-- Agregamos la pestaña ficha -->
       <b-tab title="Ficha">
-        <!-- Agreagmos contenedor -->
+        <!-- Agregagmos contenedor -->
         <b-container fluid>
             <!-- Agregamos componente ficha -->
             <Ficha></Ficha>

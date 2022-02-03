@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <!-- Creamos el Footer -->

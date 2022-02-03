@@ -1,7 +1,7 @@
 <template>
   <div class="home centrado">
     <div class="container centrado">
-    <!-- comonente de titulo manda un msj dentro de una variable -->
+    <!-- componente de titulo manda un msj dentro de una variable -->
     <HelloWorld msg="BIENVENIDO A THE COMICCAVE" />
     <!-- Agregamos un boton de busqueda, no esta activo por el momento-->
     <Search></Search>

@@ -2,9 +2,9 @@
   <div>
     <!-- Contendor con scroll -->
     <div class="mt-3" id="scrollspy-nested" style="position:relative; height:200px; overflow-y:auto">
-      <!-- Si no hay comentarios se inprime un msj -->
+      <!-- Si no hay comentarios se imprime un msj -->
       <div v-if="submittedComment.length === 0">Sin comentarios</p></div>
-      <!-- Inciamos la lista -->
+      <!-- Iniciamos la lista -->
       <b-list-group v-else class="mb-0 pl-3">
         <!-- Cargamos comentarios -->
         <b-list-group-item v-for="(comentario, index) in submittedComment"  id="textarea"
@@ -22,7 +22,7 @@
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOk">
-      <!-- Insertarmos un formulario -->
+      <!-- Insertamos un formulario -->
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <!-- Agregamos contenedor para comentarios -->
         <b-form-group

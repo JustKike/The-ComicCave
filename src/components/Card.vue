@@ -1,7 +1,7 @@
 <template>
 <!-- Insertamos contenedor -->
   <div class="Card centrado m-3">
-    <!-- Contendor para la imagen -->
+    <!-- Contenedor para la imagen -->
     <div class="container">
       <!-- Agregamos un link a la imagen -->
       <b-link :to="{ name: liga }">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Inciamos el formulario -->
+    <!-- Iniciamos el formulario -->
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <!-- Agrupamos los elementos del formulario -->
       <b-form-group

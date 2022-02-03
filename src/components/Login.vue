@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- Agreamos un contenedor -->
+    <!-- Agregamos un contenedor -->
     <div class="mb-2">
-      <!-- Agregamos boton inciar sesion para mostrar barra lateral -->
+      <!-- Agregamos boton iniciar sesion para mostrar barra lateral -->
       <b-button
         pill
         variant="primary"
@@ -30,7 +30,7 @@
       <!-- Termina el footer -->
       <!-- Agregamos contenedor -->
       <div class="px-3 py-2">
-        <!-- Agreagmos una contenedor tipo carta -->
+        <!-- Agregagmos una contenedor tipo carta -->
         <b-card class="mt-3" header="Inicia Sesion">
           <!-- Creamos el formulario de inicio de sesion -->
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
@@ -67,7 +67,7 @@
             </b-form-group>
             <!-- Agregamos una separacion -->
             <br/>
-            <!-- contendor para boton enviar y cancelar -->
+            <!-- contenedor para boton enviar y cancelar -->
             <div class="d-flex justify-content-center">
               <b-button type="submit" variant="primary">Enviar</b-button>|
               <b-button type="reset" variant="danger">Cancelar</b-button>
@@ -76,7 +76,7 @@
           <!-- Termina el formulario -->
         </b-card>
       </div>
-      <!-- Agregamos un contendor para modal Crear cuenta -->
+      <!-- Agregamos un contenedor para modal Crear cuenta -->
       <div class="px-3 py-2">
         <join></join>
       </div>
