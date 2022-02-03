@@ -67,19 +67,19 @@
         this.comentState = null
       },
       handleOk(bvModalEvt) {
-        // Prevent modal from closing
+        // Evitar que modal se cierre
         bvModalEvt.preventDefault()
-        // Trigger submit handler
+        // Activar controlador de envío
         this.handleSubmit()
       },
       handleSubmit() {
-        // Exit when the form isn't valid
+        // Salir cuando el formulario no es válido
         if (!this.checkFormValidity()) {
           return
         }
-        // Push the name to submitted names
+        // Push el name a los names enviados
         this.submittedComment.push(this.comentario)
-        // Hide the modal manually
+        // Ocultar el modal manualmente
         this.$nextTick(() => {
           this.$bvModal.hide('modal-prevent-closing')
         })

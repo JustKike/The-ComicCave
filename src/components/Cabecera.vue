@@ -1,16 +1,20 @@
 <template>
+<!-- Creamos un contenedor -->
   <div class="contenedor">
+    <!-- Insertamos una imagen de cabecera -->
     <img class="Imgfondo" alt="Vue logo" src="@/assets/cabecera7.jpg" />
+    <!-- Agregamos el titulo del encabezado -->
     <div class="centrado"><h1 class="shadow">The ComicCave</h1></div>
   </div>
 </template>
 
 <script>
+// Exportamos el componente
 export default {
   name: "Cabecera",
 };
 </script>
-
+// Agregamos algunos estilos al componente
 <style scoped>
 .Imgfondo {
   background-size: 100%;
