@@ -17,6 +17,7 @@ Vue.use(IconsPlugin)
 // Instancia de vue
 Vue.config.productionTip = false
 
+
 new Vue({
     router,
     store,

@@ -31,7 +31,13 @@ const routes = [{
         path: "/cienciaF",
         name: "CienciaF",
         component: () =>
-            import ( /* webpackChunkName: "CienciaF" */ "../views/CienciaF.vue"),
+            import ( /* webpackChunkName: "CienciaF" */ "../views/categoria/CienciaF.vue"),
+    },
+    {
+        path: "/superHeroes",
+        name: "SuperH",
+        component: () =>
+            import ( /* webpackChunkName: "SuperH" */ "../views/categoria/SuperH.vue"),
     },
     {
         path: "/forum",

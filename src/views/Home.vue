@@ -12,7 +12,7 @@
     <Card msg="# 1 Ciencia ficción"  dir="space01.jpg" liga="CienciaF"></Card>
     <Card msg="# 2 Horror"  dir="AdventuresIntoDarkness.jpg" ></Card>
     <Card msg="# 3 Guerra"  dir="GI-Joe.jpg" ></Card> 
-    <Card msg="# 4 Superhéroes"  dir="SuperHeroes.jpg" ></Card>
+    <Card msg="# 4 Superhéroes"  dir="SuperHeroes.jpg" liga="SuperH" ></Card>
     </b-card-group>
     </div>
     </div>
@@ -26,6 +26,7 @@ import Cabecera from "@/components/Cabecera.vue";
 import Cliplogo from "@/components/Cliplogo.vue";
 import Search from "@/components/Search.vue";
 import Card from "@/components/Card.vue";
+import Comic from "@/components/Comic.vue";
 
 // Agregamos los componentes para utilizarlos en el template
 export default {
@@ -35,7 +36,8 @@ export default {
     Cabecera,
     Cliplogo,
     Search,
-    Card
+    Card,
+    Comic
   },
 };
 </script>

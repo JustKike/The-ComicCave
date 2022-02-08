@@ -29,6 +29,8 @@
     <b-container>
       <router-view />
     </b-container>
+    <!-- pie de pagina -->
+    <Footer></Footer>
   </div>
 </template>
 
@@ -36,6 +38,7 @@
 // Importamos componentes
 import Cabecera from "@/components/Cabecera.vue";
 import Login from "@/components/Login.vue";
+import Footer from "@/components/Footer.vue";
 
 // llamamos al los componentes
 export default {
@@ -43,6 +46,11 @@ export default {
   components: {
     Cabecera,
     Login,
+    Footer
   },
 };
+
 </script>
+<style>
+
+</style>
