@@ -17,6 +17,9 @@ Vue.use(IconsPlugin)
 // Instancia de vue
 Vue.config.productionTip = false
 
+//importar estilos 
+import '@/assets/styles.css'
+
 
 new Vue({
     router,

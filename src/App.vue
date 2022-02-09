@@ -16,7 +16,9 @@
               <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true">
               </b-icon> Inicio</b-nav-item>
             <b-nav-item :to="{ name: 'Releases' }" exact>Lanzamientos</b-nav-item>
-            <b-nav-item :to="{ name: 'Forum' }">Foro</b-nav-item>
+            <b-nav-item :to="{ name: 'Forum' }">
+              <b-icon icon="chat-square-text-fill" scale="0.9" shift-v="1" aria-hidden="true"></b-icon>
+               Foro</b-nav-item>
             <b-nav-item :to="{ name: 'Contact' }">Contacto</b-nav-item>
             <b-nav-item :to="{ name: 'About' }">Acerca de</b-nav-item>
           </b-navbar-nav>
@@ -51,6 +53,3 @@ export default {
 };
 
 </script>
-<style>
-
-</style>

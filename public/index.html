@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="contenedor-color">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
@@ -73,5 +73,9 @@
         opacity: 1;
         filter: "alpha(opacity=100)";
         -ms-filter: "alpha(opacity=100)";
+    }
+    
+    .contenedor-color {
+        background-color: rgb(231, 228, 228);
     }
 </style>
