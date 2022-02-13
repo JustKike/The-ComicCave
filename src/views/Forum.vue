@@ -36,6 +36,24 @@
       <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
         <!-- Iniciamos un formulario -->
         <form ref="form" @submit.stop.prevent="handleSubmit">
+          <!-- Etiqueta de autor -->
+          <b-form-group
+            label="Autor:"
+            label-for="autor-input"
+            invalid-feedback="Nombre de Autor Requerido"
+            :state="autorState"
+            :label-text-variant="labelTextVariant"
+          >
+            <!-- input para el titulo -->
+            <b-form-input
+              id="titulo-input"
+              v-model="Autor"
+              :state="autorState"
+              placeholder="Escribe tu nombre aquí"
+              required
+              class="mb-3"
+            ></b-form-input>
+          </b-form-group>
           <!-- Etiqueta de titulo -->
           <b-form-group
             label="Título de tu pregunta/aporte/discusión:"
@@ -68,7 +86,7 @@
               :options="opciones"
               class="form-select mb-3"
               style="width: 100%"
-              >
+            >
               <!-- This slot appears above the options from 'options' prop -->
               <template #first>
                 <b-form-select-option :value="null" disabled
@@ -80,75 +98,58 @@
 
           <!-- Creamos toolbar de la herramienta devextreme -->
           <div>
-            <DxHtmlEditor
-              :placeholder="msg"
-              height="300px"
-            >
-              <DxMediaResizing :enabled="true"/>
-                <DxToolbar :multiline="isMultiline">
-                  <DxItem name="undo"/>
-                  <DxItem name="redo"/>
-                  <DxItem name="separator"/>
-                  <DxItem
-                    :accepted-values="sizeValues"
-                    name="size"
-                  />
-                  <DxItem
-                    :accepted-values="fontValues"
-                    name="font"
-                  />
-                  <DxItem name="separator"/>
-                  <DxItem name="bold"/>
-                  <DxItem name="italic"/>
-                  <DxItem name="strike"/>
-                  <DxItem name="underline"/>
-                  <DxItem name="separator"/>
-                  <DxItem name="alignLeft"/>
-                  <DxItem name="alignCenter"/>
-                  <DxItem name="alignRight"/>
-                  <DxItem name="alignJustify"/>
-                  <DxItem name="separator"/>
-                  <DxItem name="orderedList"/>
-                  <DxItem name="bulletList"/>
-                  <DxItem name="separator"/>
-                  <DxItem
-                    :accepted-values="headerValues"
-                    name="header"
-                  />
-                  <DxItem name="separator"/>
-                  <DxItem name="color"/>
-                  <DxItem name="background"/>
-                  <DxItem name="separator"/>
-                  <DxItem name="link"/>
-                  <DxItem name="image"/>
-                  <DxItem name="separator"/>
-                  <DxItem name="clear"/>
-                  <DxItem name="codeBlock"/>
-                  <DxItem name="blockquote"/>
-                  <DxItem name="separator"/>
-                  <DxItem name="insertTable"/>
-                  <DxItem name="deleteTable"/>
-                  <DxItem name="insertRowAbove"/>
-                  <DxItem name="insertRowBelow"/>
-                  <DxItem name="deleteRow"/>
-                  <DxItem name="insertColumnLeft"/>
-                  <DxItem name="insertColumnRight"/>
-                  <DxItem name="deleteColumn"/>
-                </DxToolbar>
-              </DxHtmlEditor>
-              <div class="options">
-                <div class="caption">Options</div>
-                <div class="option">
-                  <DxCheckBox
-                    v-model="isMultiline"
-                    text="Multiline toolbar"
-                  />
-                </div>
+            <DxHtmlEditor :placeholder="msg" height="300px">
+              <DxMediaResizing :enabled="true" />
+              <DxToolbar :multiline="isMultiline">
+                <DxItem name="undo" />
+                <DxItem name="redo" />
+                <DxItem name="separator" />
+                <DxItem :accepted-values="sizeValues" name="size" />
+                <DxItem :accepted-values="fontValues" name="font" />
+                <DxItem name="separator" />
+                <DxItem name="bold" />
+                <DxItem name="italic" />
+                <DxItem name="strike" />
+                <DxItem name="underline" />
+                <DxItem name="separator" />
+                <DxItem name="alignLeft" />
+                <DxItem name="alignCenter" />
+                <DxItem name="alignRight" />
+                <DxItem name="alignJustify" />
+                <DxItem name="separator" />
+                <DxItem name="orderedList" />
+                <DxItem name="bulletList" />
+                <DxItem name="separator" />
+                <DxItem :accepted-values="headerValues" name="header" />
+                <DxItem name="separator" />
+                <DxItem name="color" />
+                <DxItem name="background" />
+                <DxItem name="separator" />
+                <DxItem name="link" />
+                <DxItem name="image" />
+                <DxItem name="separator" />
+                <DxItem name="clear" />
+                <DxItem name="codeBlock" />
+                <DxItem name="blockquote" />
+                <DxItem name="separator" />
+                <DxItem name="insertTable" />
+                <DxItem name="deleteTable" />
+                <DxItem name="insertRowAbove" />
+                <DxItem name="insertRowBelow" />
+                <DxItem name="deleteRow" />
+                <DxItem name="insertColumnLeft" />
+                <DxItem name="insertColumnRight" />
+                <DxItem name="deleteColumn" />
+              </DxToolbar>
+            </DxHtmlEditor>
+            <div class="options">
+              <div class="caption">Options</div>
+              <div class="option">
+                <DxCheckBox v-model="isMultiline" text="Multiline toolbar" />
               </div>
             </div>
-
+          </div>
           <!-- aqui termina el textbox con toolbar -->
-
         </form>
         <!-- Footer para el modal -->
         <template #modal-footer>
@@ -188,13 +189,11 @@ import {
   DxToolbar,
   DxMediaResizing,
   DxItem,
-} from 'devextreme-vue/html-editor';
-import {
-  DxCheckBox,
-} from 'devextreme-vue/check-box';
+} from "devextreme-vue/html-editor";
+import { DxCheckBox } from "devextreme-vue/check-box";
 
 export default {
-   components: {
+  components: {
     DxHtmlEditor,
     DxMediaResizing,
     DxToolbar,
@@ -204,7 +203,7 @@ export default {
   name: "Forum",
   data() {
     return {
-      msg: 'escribe aquí tu pregunta / aporte / discusión:',
+      msg: "escribe aquí tu pregunta / aporte / discusión:",
       seleccion: null,
       labelTextVariant: "dark",
       opciones: [
@@ -213,10 +212,20 @@ export default {
         { value: "C", text: "General" },
       ],
       //inicia toolbar
-      sizeValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
-        fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana','book Antiqua'],
-        headerValues: [false, 1, 2, 3, 4, 5],
-        isMultiline: true,
+      sizeValues: ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt"],
+      fontValues: [
+        "Arial",
+        "Courier New",
+        "Georgia",
+        "Impact",
+        "Lucida Console",
+        "Tahoma",
+        "Times New Roman",
+        "Verdana",
+        "book Antiqua",
+      ],
+      headerValues: [false, 1, 2, 3, 4, 5],
+      isMultiline: true,
       //termina toolbar
     };
   },
@@ -227,12 +236,10 @@ export default {
   methods: {
     async getEvents() {
       try {
-
-        const querySnapshot = await getDocs(collection(db, 'temas'));
+        const querySnapshot = await getDocs(collection(db, "temas"));
         querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data()}`);
         });
-
       } catch (error) {
         console.log(error);
       }
@@ -245,8 +252,6 @@ export default {
     },
   },
 };
-
-
 </script>
 
 <style scoped>

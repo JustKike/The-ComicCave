@@ -1,7 +1,6 @@
 <template>
     <div class="contact">
         <Form></Form>
-        
     </div>
 </template>
 

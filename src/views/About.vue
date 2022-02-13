@@ -31,8 +31,8 @@
                 thumbnail
                 fluid
                 alt="Responsive image"
-                 style="float: left; margin-right: 50px;"
-                src="../img/avatar2.jpg" height="300" width="200">
+                class="mb -3" style="float: left; margin-right: 50px;"
+                src="../img/joselo.jpeg" height="300" width="200">
                 </b-img>
       <b-card-text>
         José Ubieta es uno de los miembros fundadores, impulsado por la idea de Jair de hacer una página web donde varias personas pudieran disfrutar de sus cómics e interactuar.
@@ -65,8 +65,8 @@ position: relative;
 
 #tarjetaJose{
 margin-bottom: 20px;
+height: 100%;
 width: 2500px;
-padding: auto;
 vertical-align: middle;
 }
 h1 {
