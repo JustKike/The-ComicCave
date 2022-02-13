@@ -33,7 +33,7 @@
         Agregar Tema</b-button
       >
       <!-- Creamos un modal -->
-      <b-modal id="modal-1" ref="modal" title="AGREGA UN TEMA!">
+      <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
         <!-- Iniciamos un formulario -->
         <form ref="form" @submit.stop.prevent="handleSubmit">
           <!-- Etiqueta de titulo -->
@@ -64,11 +64,11 @@
           >
             <!-- input para la categoria -->
             <b-form-select
-              v-model="selected"
-              :options="options"
+              v-model="seleccion"
+              :options="opciones"
               class="form-select mb-3"
               style="width: 100%"
-              >>
+              >
               <!-- This slot appears above the options from 'options' prop -->
               <template #first>
                 <b-form-select-option :value="null" disabled
@@ -78,42 +78,44 @@
             </b-form-select>
           </b-form-group>
 
-          <b-button-toolbar class="mb-3">
-            <b-button-group class="mr-1">
-              <b-button title="Align left">
-                <b-icon icon="text-left" aria-hidden="true"></b-icon>
-              </b-button>
-              <b-button title="Align center">
-                <b-icon icon="text-center" aria-hidden="true"></b-icon>
-              </b-button>
-              <b-button title="Align right">
-                <b-icon icon="text-right" aria-hidden="true"></b-icon>
-              </b-button>
-            </b-button-group>
-            <b-button-group>
-              <b-button title="Bold">
-                <b-icon icon="type-bold" aria-hidden="true"></b-icon>
-              </b-button>
-              <b-button title="Italic">
-                <b-icon icon="type-italic" aria-hidden="true"></b-icon>
-              </b-button>
-              <b-button title="Underline">
-                <b-icon icon="type-underline" aria-hidden="true"></b-icon>
-              </b-button>
-              <b-button title="Strikethrough">
-                <b-icon icon="type-strikethrough" aria-hidden="true"></b-icon>
-              </b-button>
-            </b-button-group>
-          </b-button-toolbar>
+          <!-- toolbar devextreme -->
+          <div class="widget-container">
+            <DxHtmlEditor
+              :placeholder="msg"
+              height="300px"
+            >
+              <DxToolbar>
+                <DxItem name="undo"/>
+                <DxItem name="redo"/>
+                <DxItem name="separator"/>
+                <DxItem
+                  :accepted-values="headerValues"
+                  name="header"
+                />
+                <DxItem name="separator"/>
+                <DxItem name="bold"/>
+                <DxItem name="italic"/>
+                <DxItem name="strike"/>
+                <DxItem name="underline"/>
+                <DxItem name="separator"/>
+                <DxItem name="alignLeft"/>
+                <DxItem name="alignCenter"/>
+                <DxItem name="alignRight"/>
+                <DxItem name="alignJustify"/>
+                <DxItem name="separator"/>
+                <DxItem
+                  :options="toolbarButtonOptions"
+                  widget="dxButton"
+                />
+              </DxToolbar>
+            </DxHtmlEditor>
+            <DxPopup
+              :show-title="true"
+              v-model="popupVisible"
+            >
+            </DxPopup>
+          </div>
 
-          <!-- Etiqueta de texto -->
-          <b-form-textarea
-            id="textarea"
-            v-model="text"
-            placeholder="Escribe aqui tu pregunta/aporte/discusión:"
-            rows="5"
-            max-rows="6"
-          ></b-form-textarea>
         </form>
         <!-- Footer para el modal -->
         <template #modal-footer>
@@ -146,18 +148,44 @@
 <script>
 import db from "../main";
 import { collection, getDocs } from "firebase/firestore";
+import {
+  DxHtmlEditor,
+  DxToolbar,
+  DxItem,
+} from 'devextreme-vue/html-editor';
+import { DxPopup } from 'devextreme-vue/popup';
 
 export default {
+   components: {
+    DxHtmlEditor,
+    DxToolbar,
+    DxItem,
+    DxPopup,
+  },
   name: "Forum",
   data() {
     return {
-      selected: null,
+      msg: 'escribe aquí tu pregunta / aporte / discusión:',
+      seleccion: null,
       labelTextVariant: "dark",
-      options: [
+      opciones: [
         { value: "A", text: "Option A" },
         { value: "B", text: "Option B" },
         { value: "C", text: "General" },
       ],
+      //inicia toolbar
+      popupVisible: false,
+      sizeValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
+      fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'],
+      headerValues: [false, 1, 2, 3, 4, 5],
+      toolbarButtonOptions: {
+        text: 'Show markup',
+        stylingMode: 'text',
+        onClick: () => {
+          this.popupVisible = true;
+        },
+      },
+      //termina toolbar
     };
   },
   mounted() {},
@@ -185,6 +213,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style scoped>
@@ -217,5 +246,9 @@ p {
   color: rgb(10, 10, 10);
   font-weight: 100;
   text-shadow: 2px 5px 8px #030000;
+}
+.dx-htmleditor-content img {
+  vertical-align: middle;
+  padding-right: 10px;
 }
 </style>
