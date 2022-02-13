@@ -79,7 +79,7 @@
           </b-form-group>
 
           <!-- Creamos toolbar de la herramienta devextreme -->
-          <div class="widget-container">
+          <div>
             <DxHtmlEditor
               :placeholder="msg"
               height="300px"
@@ -192,7 +192,6 @@ import {
 import {
   DxCheckBox,
 } from 'devextreme-vue/check-box';
-import { DxPopup } from 'devextreme-vue/popup';
 
 export default {
    components: {
@@ -215,7 +214,7 @@ export default {
       ],
       //inicia toolbar
       sizeValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
-        fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'],
+        fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana','book Antiqua'],
         headerValues: [false, 1, 2, 3, 4, 5],
         isMultiline: true,
       //termina toolbar
