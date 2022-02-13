@@ -12,7 +12,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "devextreme": "21.2.5",
-    "devextreme-vue": "21.2.5",
+    "devextreme-vue": "^21.2.5",
     "firebase": "^9.6.6",
     "jshint": "^2.13.4",
     "mdbootstrap": "^4.20.0",
