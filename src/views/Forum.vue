@@ -78,43 +78,76 @@
             </b-form-select>
           </b-form-group>
 
-          <!-- toolbar devextreme -->
+          <!-- Creamos toolbar de la herramienta devextreme -->
           <div class="widget-container">
             <DxHtmlEditor
               :placeholder="msg"
               height="300px"
             >
-              <DxToolbar>
-                <DxItem name="undo"/>
-                <DxItem name="redo"/>
-                <DxItem name="separator"/>
-                <DxItem
-                  :accepted-values="headerValues"
-                  name="header"
-                />
-                <DxItem name="separator"/>
-                <DxItem name="bold"/>
-                <DxItem name="italic"/>
-                <DxItem name="strike"/>
-                <DxItem name="underline"/>
-                <DxItem name="separator"/>
-                <DxItem name="alignLeft"/>
-                <DxItem name="alignCenter"/>
-                <DxItem name="alignRight"/>
-                <DxItem name="alignJustify"/>
-                <DxItem name="separator"/>
-                <DxItem
-                  :options="toolbarButtonOptions"
-                  widget="dxButton"
-                />
-              </DxToolbar>
-            </DxHtmlEditor>
-            <DxPopup
-              :show-title="true"
-              v-model="popupVisible"
-            >
-            </DxPopup>
-          </div>
+              <DxMediaResizing :enabled="true"/>
+                <DxToolbar :multiline="isMultiline">
+                  <DxItem name="undo"/>
+                  <DxItem name="redo"/>
+                  <DxItem name="separator"/>
+                  <DxItem
+                    :accepted-values="sizeValues"
+                    name="size"
+                  />
+                  <DxItem
+                    :accepted-values="fontValues"
+                    name="font"
+                  />
+                  <DxItem name="separator"/>
+                  <DxItem name="bold"/>
+                  <DxItem name="italic"/>
+                  <DxItem name="strike"/>
+                  <DxItem name="underline"/>
+                  <DxItem name="separator"/>
+                  <DxItem name="alignLeft"/>
+                  <DxItem name="alignCenter"/>
+                  <DxItem name="alignRight"/>
+                  <DxItem name="alignJustify"/>
+                  <DxItem name="separator"/>
+                  <DxItem name="orderedList"/>
+                  <DxItem name="bulletList"/>
+                  <DxItem name="separator"/>
+                  <DxItem
+                    :accepted-values="headerValues"
+                    name="header"
+                  />
+                  <DxItem name="separator"/>
+                  <DxItem name="color"/>
+                  <DxItem name="background"/>
+                  <DxItem name="separator"/>
+                  <DxItem name="link"/>
+                  <DxItem name="image"/>
+                  <DxItem name="separator"/>
+                  <DxItem name="clear"/>
+                  <DxItem name="codeBlock"/>
+                  <DxItem name="blockquote"/>
+                  <DxItem name="separator"/>
+                  <DxItem name="insertTable"/>
+                  <DxItem name="deleteTable"/>
+                  <DxItem name="insertRowAbove"/>
+                  <DxItem name="insertRowBelow"/>
+                  <DxItem name="deleteRow"/>
+                  <DxItem name="insertColumnLeft"/>
+                  <DxItem name="insertColumnRight"/>
+                  <DxItem name="deleteColumn"/>
+                </DxToolbar>
+              </DxHtmlEditor>
+              <div class="options">
+                <div class="caption">Options</div>
+                <div class="option">
+                  <DxCheckBox
+                    v-model="isMultiline"
+                    text="Multiline toolbar"
+                  />
+                </div>
+              </div>
+            </div>
+
+          <!-- aqui termina el textbox con toolbar -->
 
         </form>
         <!-- Footer para el modal -->
@@ -146,21 +179,28 @@
 </template>
 
 <script>
+// importaciones para la BD
 import db from "../main";
 import { collection, getDocs } from "firebase/firestore";
+// importaciones para la toolbar
 import {
   DxHtmlEditor,
   DxToolbar,
+  DxMediaResizing,
   DxItem,
 } from 'devextreme-vue/html-editor';
+import {
+  DxCheckBox,
+} from 'devextreme-vue/check-box';
 import { DxPopup } from 'devextreme-vue/popup';
 
 export default {
    components: {
     DxHtmlEditor,
+    DxMediaResizing,
     DxToolbar,
     DxItem,
-    DxPopup,
+    DxCheckBox,
   },
   name: "Forum",
   data() {
@@ -174,17 +214,10 @@ export default {
         { value: "C", text: "General" },
       ],
       //inicia toolbar
-      popupVisible: false,
       sizeValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
-      fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'],
-      headerValues: [false, 1, 2, 3, 4, 5],
-      toolbarButtonOptions: {
-        text: 'Show markup',
-        stylingMode: 'text',
-        onClick: () => {
-          this.popupVisible = true;
-        },
-      },
+        fontValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana'],
+        headerValues: [false, 1, 2, 3, 4, 5],
+        isMultiline: true,
       //termina toolbar
     };
   },
@@ -213,6 +246,7 @@ export default {
     },
   },
 };
+
 
 </script>
 
@@ -247,8 +281,29 @@ p {
   font-weight: 100;
   text-shadow: 2px 5px 8px #030000;
 }
+
+/* CSS para toolbar */
 .dx-htmleditor-content img {
   vertical-align: middle;
   padding-right: 10px;
+}
+
+.dx-htmleditor-content table {
+  width: 50%;
+}
+
+.options {
+  padding: 15px;
+  background-color: rgba(191, 191, 191, 0.15);
+  margin-top: 20px;
+}
+
+.caption {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.option {
+  margin-top: 8px;
 }
 </style>

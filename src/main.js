@@ -20,6 +20,7 @@ Vue.use(VueTextareaAutosize);
 
 //importar estilos 
 import '@/assets/styles.css';
+
 //importamos estilos devextreme para toolbar
 import 'devextreme/dist/css/dx.light.css';
 
