@@ -6,7 +6,7 @@
     <b-navbar toggleable="lg" type="dark" variant="danger">
       <b-container>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-navbar-brand href="#"></b-navbar-brand>
+        <b-navbar-brand href="#" ></b-navbar-brand>
         <!-- Enlaces responsivos -->
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>

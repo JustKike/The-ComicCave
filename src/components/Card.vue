@@ -28,9 +28,9 @@ export default {
   name: "Card",
   //recibimos variables
   props: {
-    msg: "string",
-    dir: "string",
-    liga: "",
+    msg: '',
+    dir: '',
+    liga: '',
   },
   //concatenamos el nombre la imagen con el url
   computed: {

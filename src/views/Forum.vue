@@ -1,38 +1,58 @@
 <template>
-<div>
-  <!-- Cabeza del foro -->
-  <header data-parallax="true" class="contenedor"
-  style="background-color: white; 
-  background-repeat: no-repeat; transform: translate3d(0px, 0px, 0px);background-size: 100% 100%;">
-  <p>En esta sección puedes dejar tus dudas, compartir tu conocimiento o generar discusiones</p>
-  </header>
+  <div>
+    <!-- Cabeza del foro -->
+    <header
+      data-parallax="true"
+      class="contenedor"
+      style="
+        background-color: white;
+        background-repeat: no-repeat;
+        transform: translate3d(0px, 0px, 0px);
+        background-size: 100% 100%;
+      "
+    >
+      <p>
+        En esta sección puedes dejar tus dudas, compartir tu conocimiento o
+        generar discusiones
+      </p>
+    </header>
     <!-- boton para agregar un tema -->
     <div class="w-full flex mb-2 mt-2">
-      <b-button variant="success" class="mx-auto d-block btn-lg" @click="showModal" ref="btnShow">
-      <b-icon icon="pencil-fill" scale="1.05" shift-v="0.8" aria-hidden="true"></b-icon>
-       Agregar Tema</b-button>
-    <!-- Creamos un modal -->
-    <b-modal id="modal-1"
-    ref="modal"
-    title="AGREGA UN TEMA!"
-    >
-      <!-- Iniciamos un formulario -->
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-        <!-- Etiqueta de titulo -->
-        <b-form-group
-          label="Título de tu pregunta/aporte/discusión:"
-          label-for="titulo-input"
-          invalid-feedback="Titulo is required"
-          :state="tituloState"
-          :label-text-variant="labelTextVariant"
-        >
-          <!-- input para el titulo -->
-          <b-form-input
-            id="titulo-input"
-            v-model="Titulo"
-            :state="tituloState" placeholder="Escribe un titulo aqui"
-            required class="mb-3"
-          ></b-form-input>
+      <b-button
+        variant="success"
+        class="mx-auto d-block btn-lg"
+        @click="showModal"
+        ref="btnShow"
+      >
+        <b-icon
+          icon="pencil-fill"
+          scale="1.05"
+          shift-v="0.8"
+          aria-hidden="true"
+        ></b-icon>
+        Agregar Tema</b-button
+      >
+      <!-- Creamos un modal -->
+      <b-modal id="modal-1" ref="modal" title="AGREGA UN TEMA!">
+        <!-- Iniciamos un formulario -->
+        <form ref="form" @submit.stop.prevent="handleSubmit">
+          <!-- Etiqueta de titulo -->
+          <b-form-group
+            label="Título de tu pregunta/aporte/discusión:"
+            label-for="titulo-input"
+            invalid-feedback="Titulo is required"
+            :state="tituloState"
+            :label-text-variant="labelTextVariant"
+          >
+            <!-- input para el titulo -->
+            <b-form-input
+              id="titulo-input"
+              v-model="Titulo"
+              :state="tituloState"
+              placeholder="Escribe un titulo aqui"
+              required
+              class="mb-3"
+            ></b-form-input>
           </b-form-group>
 
           <!-- Etiqueta de categoria -->
@@ -42,14 +62,49 @@
             invalid-feedback="categoria is required"
             :state="categoriaState"
           >
-          <!-- input para la categoria -->
-            <b-form-select v-model="selected" :options="options" class="form-select mb-3" style="width: 100%;">>
+            <!-- input para la categoria -->
+            <b-form-select
+              v-model="selected"
+              :options="options"
+              class="form-select mb-3"
+              style="width: 100%"
+              >>
               <!-- This slot appears above the options from 'options' prop -->
               <template #first>
-                <b-form-select-option :value="null" disabled>-- Selecciona una categoria --</b-form-select-option>
+                <b-form-select-option :value="null" disabled
+                  >-- Selecciona una categoria --</b-form-select-option
+                >
               </template>
             </b-form-select>
           </b-form-group>
+
+          <b-button-toolbar class="mb-3">
+            <b-button-group class="mr-1">
+              <b-button title="Align left">
+                <b-icon icon="text-left" aria-hidden="true"></b-icon>
+              </b-button>
+              <b-button title="Align center">
+                <b-icon icon="text-center" aria-hidden="true"></b-icon>
+              </b-button>
+              <b-button title="Align right">
+                <b-icon icon="text-right" aria-hidden="true"></b-icon>
+              </b-button>
+            </b-button-group>
+            <b-button-group>
+              <b-button title="Bold">
+                <b-icon icon="type-bold" aria-hidden="true"></b-icon>
+              </b-button>
+              <b-button title="Italic">
+                <b-icon icon="type-italic" aria-hidden="true"></b-icon>
+              </b-button>
+              <b-button title="Underline">
+                <b-icon icon="type-underline" aria-hidden="true"></b-icon>
+              </b-button>
+              <b-button title="Strikethrough">
+                <b-icon icon="type-strikethrough" aria-hidden="true"></b-icon>
+              </b-button>
+            </b-button-group>
+          </b-button-toolbar>
 
           <!-- Etiqueta de texto -->
           <b-form-textarea
@@ -59,95 +114,108 @@
             rows="5"
             max-rows="6"
           ></b-form-textarea>
-        
-      </form>
-      <!-- Footer para el modal -->
-                  <template #modal-footer> 
-                    <div
-                      class="w-100 card-body d-flex justify-content-between align-items-center "
-                    >
-                    <!-- Titulo del footer -->
-                      <strong>The ComicCave</strong>
-                      <!-- Agregamos boton publicar -->
-                      <b-button
-                        variant="success"
-                        size="sm"
-                        @click="hideModal"
-                      >
-                        <b-icon icon="chat-square-dots-fill" scale="0.7" shift-v="1" aria-hidden="true"></b-icon>
-                         PUBLICAR
-                      </b-button>
-                      <!-- Agregamos boton cerrar -->
-                      <b-button
-                        variant="primary"
-                        size="sm"
-                        @click="hideModal"
-                      >
-                        CERRAR
-                      </b-button>
-                    </div>
-                  </template>
-    </b-modal>
-  </div>
-
-
+        </form>
+        <!-- Footer para el modal -->
+        <template #modal-footer>
+          <div
+            class="w-100 card-body d-flex justify-content-between align-items-center"
+          >
+            <!-- Titulo del footer -->
+            <strong>The ComicCave</strong>
+            <!-- Agregamos boton publicar -->
+            <b-button variant="success" size="sm" @click="hideModal">
+              <b-icon
+                icon="chat-square-dots-fill"
+                scale="0.7"
+                shift-v="1"
+                aria-hidden="true"
+              ></b-icon>
+              PUBLICAR
+            </b-button>
+            <!-- Agregamos boton cerrar -->
+            <b-button variant="primary" size="sm" @click="hideModal">
+              CERRAR
+            </b-button>
+          </div>
+        </template>
+      </b-modal>
+    </div>
   </div>
 </template>
 
 <script>
+import db from "../main";
+import { collection, getDocs } from "firebase/firestore";
+
 export default {
-  name: 'Forum',
+  name: "Forum",
   data() {
     return {
       selected: null,
       labelTextVariant: "dark",
-        options: [
-          { value: 'A', text: 'Option A' },
-          { value: 'B', text: 'Option B' },
-          { value: 'C', text: 'Otros' }
-        ]
-    }
+      options: [
+        { value: "A", text: "Option A" },
+        { value: "B", text: "Option B" },
+        { value: "C", text: "General" },
+      ],
+    };
+  },
+  mounted() {},
+  created() {
+    this.getEvents();
   },
   methods: {
+    async getEvents() {
+      try {
+
+        const querySnapshot = await getDocs(collection(db, 'temas'));
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+
+      } catch (error) {
+        console.log(error);
+      }
+    },
     showModal() {
-      this.$root.$emit('bv::show::modal', 'modal-1', '#btnShow')
+      this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
     },
     hideModal() {
-        this.$refs['modal'].hide()
-      }
-  }
-}
+      this.$refs["modal"].hide();
+    },
+  },
+};
 </script>
 
 <style scoped>
-.contenedor{
+.contenedor {
   border-radius: 10px;
   padding: 5px;
   margin-top: 5px;
 }
 .centrado {
-    text-align: center;
-  }
-  h3 {
-    margin: 40px 0 0;
-  }
-  h1 {
-    font-family: "lust-display-didone", serif;
-    text-align: center;
-    font-weight: bold;
-    font-size: 60px;
-    width: 100%;
-    letter-spacing: 0.5rem;
-    color: rgb(105, 10, 3);
-    text-shadow: 2px 5px 8px #030000;
-  }
-  p {
-    font-family: Century Schoolbook, Century Schoolbook L, Georgia, serif;
-    font-size: 30px;
-    text-align: center;
-    margin: 2rem 3rem 0;
-    color: rgb(10, 10, 10);
-    font-weight: 100;
-    text-shadow: 2px 5px 8px #030000;
-  }
+  text-align: center;
+}
+h3 {
+  margin: 40px 0 0;
+}
+h1 {
+  font-family: "lust-display-didone", serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  width: 100%;
+  letter-spacing: 0.5rem;
+  color: rgb(105, 10, 3);
+  text-shadow: 2px 5px 8px #030000;
+}
+p {
+  font-family: Century Schoolbook, Century Schoolbook L, Georgia, serif;
+  font-size: 30px;
+  text-align: center;
+  margin: 2rem 3rem 0;
+  color: rgb(10, 10, 10);
+  font-weight: 100;
+  text-shadow: 2px 5px 8px #030000;
+}
 </style>

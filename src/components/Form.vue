@@ -32,7 +32,7 @@
     <b-col md="1">
         <p></p>
         <b-row>
-                <button class="btn btn-primary" type="submit">Enviar datos</button>
+                <button class="btn btn-primary mb-3" type="submit">Enviar datos</button>
         </b-row>
     </b-col>
     </form>

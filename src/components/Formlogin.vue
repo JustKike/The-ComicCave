@@ -6,22 +6,22 @@
       <b-form-group
         id="input-group-1"
         label="Correo:"
-        label-for="input-1"
+        label-for="input-2"
         description="Nunca compartiremos tus datos con nadie más..">
-        <!-- Agregamos input para contraseña -->
+        <!-- Agregamos input para Correo -->
         <b-form-input
-          id="input-1"
+          id="input-2"
           v-model="form.email"
           type="email"
-          placeholder="Introduce la contraseña"
+          placeholder="Introduce tu correo"
           required
         ></b-form-input>
       </b-form-group>
       <!-- Agregamos etiqueta nombre -->
-      <b-form-group id="input-group-2" label="Nombre:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Nombre:" label-for="input-3">
         <!-- insertamos input para el nombre -->
         <b-form-input
-          id="input-2"
+          id="input-3"
           v-model="form.name"
           placeholder="Introduce un nombre"
           required
@@ -29,11 +29,11 @@
       </b-form-group>
       <!-- Agregamos etiqueta contraseña -->
       <b-form-group>
-        <label for="text-password">Contraseña</label>
+        <label for="text-password1">Contraseña</label>
         <!-- Agregamos input para cotraseña -->
         <b-form-input
           type="password"
-          id="text-password"
+          id="text-password1"
           aria-describedby="password-help-block"
           v-model="form.password"
           required
