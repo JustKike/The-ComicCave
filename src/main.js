@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+/* add font awesome icon component */
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 //Add icons to library
 library.add(faUserSecret);
 
