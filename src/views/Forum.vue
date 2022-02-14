@@ -34,21 +34,19 @@
       >
       <!-- Creamos un modal -->
       <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
-        <!-- Iniciamos un formulario -->
-        <form ref="form" @submit.stop.prevent="handleSubmit">
+        <!-- Iniciamos un formulario handleSubmit -->
+        <b-form ref="form" @submit="onSubmit">
           <!-- Etiqueta de autor -->
           <b-form-group
             label="Autor:"
             label-for="autor-input"
             invalid-feedback="Nombre de Autor Requerido"
-            :state="autorState"
             :label-text-variant="labelTextVariant"
           >
             <!-- input para el titulo -->
             <b-form-input
-              id="titulo-input"
-              v-model="Autor"
-              :state="autorState"
+              id="autor-input"
+              v-model="form.autor"
               placeholder="Escribe tu nombre aquí"
               required
               class="mb-3"
@@ -59,14 +57,12 @@
             label="Título de tu pregunta/aporte/discusión:"
             label-for="titulo-input"
             invalid-feedback="Titulo is required"
-            :state="tituloState"
             :label-text-variant="labelTextVariant"
           >
             <!-- input para el titulo -->
             <b-form-input
               id="titulo-input"
-              v-model="Titulo"
-              :state="tituloState"
+              v-model="form.titulo"
               placeholder="Escribe un titulo aqui"
               required
               class="mb-3"
@@ -78,11 +74,10 @@
             label="Categoria:"
             label-for="categoria-input"
             invalid-feedback="categoria is required"
-            :state="categoriaState"
           >
             <!-- input para la categoria -->
             <b-form-select
-              v-model="seleccion"
+              v-model="form.seleccion"
               :options="opciones"
               class="form-select mb-3"
               style="width: 100%"
@@ -98,7 +93,9 @@
 
           <!-- Creamos toolbar de la herramienta devextreme -->
           <div>
-            <DxHtmlEditor :placeholder="msg" height="300px">
+            <DxHtmlEditor 
+            v-model="form.texto"
+            :placeholder="msg" height="300px">
               <DxMediaResizing :enabled="true" />
               <DxToolbar :multiline="isMultiline">
                 <DxItem name="undo" />
@@ -150,7 +147,7 @@
             </div>
           </div>
           <!-- aqui termina el textbox con toolbar -->
-        </form>
+         </b-form>
         <!-- Footer para el modal -->
         <template #modal-footer>
           <div
@@ -159,7 +156,7 @@
             <!-- Titulo del footer -->
             <strong>The ComicCave</strong>
             <!-- Agregamos boton publicar -->
-            <b-button variant="success" size="sm" @click="hideModal">
+            <b-button type="submit" variant="danger" size="sm">
               <b-icon
                 icon="chat-square-dots-fill"
                 scale="0.7"
@@ -181,8 +178,9 @@
 
 <script>
 // importaciones para la BD
-import db from "../main";
-import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { reactive } from 'vue'
+import { collection, addDoc } from "firebase/firestore/lite";
 // importaciones para la toolbar
 import {
   DxHtmlEditor,
@@ -201,8 +199,28 @@ export default {
     DxCheckBox,
   },
   name: "Forum",
+  // agregar datos a cloud Firebase
+   setup() {
+        const form = reactive({ 
+            autor: '', 
+            titulo: '',
+            seleccion: '',
+            texto: ''
+            })
+        const onSubmit = async () => {
+            const docRef = await addDoc(collection(db,'temas'),{ ...form })
+            form.autor = ''
+            form.titulo = ''
+            form.seleccion = ''
+            form.texto = ''
+            console.log("Document written with ID: ", docRef.id);
+        }
+        return { form, onSubmit }
+    },
   data() {
     return {
+      form: [],
+      onSubmit:[],
       msg: "escribe aquí tu pregunta / aporte / discusión:",
       seleccion: null,
       labelTextVariant: "dark",
@@ -229,21 +247,7 @@ export default {
       //termina toolbar
     };
   },
-  mounted() {},
-  created() {
-    this.getEvents();
-  },
   methods: {
-    async getEvents() {
-      try {
-        const querySnapshot = await getDocs(collection(db, "temas"));
-        querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    },
     showModal() {
       this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
     },
@@ -251,8 +255,11 @@ export default {
       this.$refs["modal"].hide();
     },
   },
+  
 };
+
 </script>
+
 
 <style scoped>
 .contenedor {
