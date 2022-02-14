@@ -9,6 +9,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 //Import icons
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 // Importamos archivosvCSS Bootstrap y BootstrapVue
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -17,7 +22,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 //Add icons to library
-library.add(faUserSecret);
+library.add(faUserSecret, faTwitter, faInstagram, faFacebook, faLinkedin, faYoutube);
 
 //Add icon component
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -41,8 +46,11 @@ import 'devextreme/dist/css/dx.light.css';
 Vue.config.productionTip = false;
 
 new Vue({
+    el: '#app',
+    components: { App },
+    template: '<App/>',
     router,
     store,
-    // renderisando app
+    // renderizando app
     render: h => h(App)
 }).$mount('#app');
