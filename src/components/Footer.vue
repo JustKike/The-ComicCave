@@ -9,7 +9,14 @@
           <p>Idea del ing. Jair Cervantes, nace como una idea para poder reunir a diferente gente en una sola página para poder interactuar con diferentes usuarios en el ámbito que gusten de buenas historias y descubrir algo nuevo dentro del mundo de los cómics.</p>
         </mdb-col>
         <mdb-col sm="6">
-          <h5 class="title">Contactos</h5>
+          <h5 class="title">Contáctanos</h5>
+            <mdb-col md="6" lg="7" class="text-center text-md-right">
+            <font-awesome-icon icon="fa-brands fa-twitter"/>
+            <font-awesome-icon icon="fab fa-instagram" />
+            <font-awesome-icon icon="fab fa-facebook" />
+            <font-awesome-icon icon="fab fa-linkedin" />
+            <font-awesome-icon icon="fab fa-youtube" />
+        </mdb-col>
           <ul>
             <li class="list-unstyled" ><a href="#!">the.comic.cave2022@gmail.com</a></li>
             <li class="list-unstyled"><a href="#!">jose.ubietadiaz@cesunbc.edu.mx</a></li>
@@ -17,13 +24,6 @@
             <li class="list-unstyled"><a href="#!">+52 664 1234567</a></li>
           </ul>
         </mdb-col>
-        <mdb-col md="6" lg="7" class="text-center text-md-right">
-            <a class="fb-ic ml-0"><i class="fab fa-facebook white-text mr-lg-4"> </i></a>
-            <a class="tw-ic"><i class="fab fa-twitter white-text mr-lg-4"> </i></a>
-            <a class="gplus-ic"><i class="fab fa-google-plus white-text mr-lg-4"> </i></a>
-            <a class="li-ic"><i class="fab fa-linkedin-in white-text mr-lg-4"> </i></a>
-            <a class="ins-ic"><i class="fab fa-instagram white-text mr-lg-4"> </i></a>
-          </mdb-col>
       </mdb-row>
     </mdb-container>
     <div class="footer-copyright text-center py-3">
