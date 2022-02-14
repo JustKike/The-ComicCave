@@ -23,7 +23,10 @@
     "jshint": "^2.13.4",
     "mdbootstrap": "^4.20.0",
     "mdbvue": "^6.7.3",
+<<<<<<< HEAD
+=======
     "nativescript-fonticon": "^2.0.2",
+>>>>>>> 6ed27d33865dab06e8bd62f2ea107fa04ecc25fb
     "tailwindcss": "^3.0.19",
     "vue": "^2.6.14",
     "vue-pdf": "^4.3.0",
