@@ -4,19 +4,21 @@
           <mdb-footer color="blue" class="font-small pt-4 mt-4">
     <mdb-container class="text-left">
       <mdb-row>
+
         <mdb-col sm="6">
           <h5 class="title">The ComicCave</h5>
           <p>Idea del ing. Jair Cervantes, nace como una idea para poder reunir a diferente gente en una sola página para poder interactuar con diferentes usuarios en el ámbito que gusten de buenas historias y descubrir algo nuevo dentro del mundo de los cómics.</p>
         </mdb-col>
+
         <mdb-col sm="6">
           <h5 class="title">Contáctanos</h5>
-            <mdb-col md="6" lg="7" class="text-center text-md-right">
-            <font-awesome-icon icon="fa-brands fa-twitter"/>
-            <font-awesome-icon icon="fab fa-instagram" />
-            <font-awesome-icon icon="fab fa-facebook" />
-            <font-awesome-icon icon="fab fa-linkedin" />
-            <font-awesome-icon icon="fab fa-youtube" />
-        </mdb-col>
+          <div class=" text-right">
+              <font-awesome-icon icon="fa-brands fa-twitter" class="m-2"/>
+              <font-awesome-icon icon="fab fa-instagram" class="m-2"/>
+              <font-awesome-icon icon="fab fa-facebook" class="m-2"/>
+              <font-awesome-icon icon="fab fa-linkedin" class="m-2"/>
+              <font-awesome-icon icon="fab fa-youtube" class="m-2"/>
+          </div>
           <ul>
             <li class="list-unstyled" ><a href="#!">the.comic.cave2022@gmail.com</a></li>
             <li class="list-unstyled"><a href="#!">jose.ubietadiaz@cesunbc.edu.mx</a></li>
@@ -24,6 +26,7 @@
             <li class="list-unstyled"><a href="#!">+52 664 1234567</a></li>
           </ul>
         </mdb-col>
+
       </mdb-row>
     </mdb-container>
     <div class="footer-copyright text-center py-3">

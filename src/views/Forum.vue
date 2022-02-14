@@ -20,7 +20,7 @@
     <div class="w-full flex mb-2 mt-2">
       <b-button
         variant="success"
-        class="mx-auto d-block btn-lg"
+        class="mx-auto d-block btn-lg btn-sombra"
         @click="showModal"
         ref="btnShow"
       >
@@ -34,120 +34,124 @@
       >
       <!-- Creamos un modal -->
       <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
-        <!-- Iniciamos un formulario handleSubmit -->
-        <b-form ref="form" @submit="onSubmit">
-          <!-- Etiqueta de autor -->
-          <b-form-group
-            label="Autor:"
-            label-for="autor-input"
-            invalid-feedback="Nombre de Autor Requerido"
-            :label-text-variant="labelTextVariant"
-          >
-            <!-- input para el titulo -->
-            <b-form-input
-              id="autor-input"
-              v-model="form.autor"
-              placeholder="Escribe tu nombre aquí"
-              required
-              class="mb-3"
-            ></b-form-input>
-          </b-form-group>
-          <!-- Etiqueta de titulo -->
-          <b-form-group
-            label="Título de tu pregunta/aporte/discusión:"
-            label-for="titulo-input"
-            invalid-feedback="Titulo is required"
-            :label-text-variant="labelTextVariant"
-          >
-            <!-- input para el titulo -->
-            <b-form-input
-              id="titulo-input"
-              v-model="form.titulo"
-              placeholder="Escribe un titulo aqui"
-              required
-              class="mb-3"
-            ></b-form-input>
-          </b-form-group>
-
-          <!-- Etiqueta de categoria -->
-          <b-form-group
-            label="Categoria:"
-            label-for="categoria-input"
-            invalid-feedback="categoria is required"
-          >
-            <!-- input para la categoria -->
-            <b-form-select
-              v-model="form.seleccion"
-              :options="opciones"
-              class="form-select mb-3"
-              style="width: 100%"
+        <!-- Iniciamos un formulario handleSubmit onSubmit-->
+        <b-row class="form">
+          <b-form @submit.prevent>
+            <!-- Etiqueta de autor -->
+            <b-form-group
+              label="Autor:"
+              label-for="autor-input"
+              invalid-feedback="Nombre de Autor Requerido"
+              :label-text-variant="labelTextVariant"
             >
-              <!-- This slot appears above the options from 'options' prop -->
-              <template #first>
-                <b-form-select-option :value="null" disabled
-                  >-- Selecciona una categoria --</b-form-select-option
-                >
-              </template>
-            </b-form-select>
-          </b-form-group>
+              <!-- input para el titulo -->
+              <b-form-input
+                id="autor-input"
+                v-model="form.autor"
+                placeholder="Escribe tu nombre aquí"
+                required
+                class="mb-3"
+              ></b-form-input>
+            </b-form-group>
+            <!-- Etiqueta de titulo -->
+            <b-form-group
+              label="Título de tu pregunta/aporte/discusión:"
+              label-for="titulo-input"
+              invalid-feedback="Titulo is required"
+              :label-text-variant="labelTextVariant"
+            >
+              <!-- input para el titulo -->
+              <b-form-input
+                id="titulo-input"
+                v-model="form.titulo"
+                placeholder="Escribe un titulo aqui"
+                required
+                class="mb-3"
+              ></b-form-input>
+            </b-form-group>
 
-          <!-- Creamos toolbar de la herramienta devextreme -->
-          <div>
-            <DxHtmlEditor 
-            v-model="form.texto"
-            :placeholder="msg" height="300px">
-              <DxMediaResizing :enabled="true" />
-              <DxToolbar :multiline="isMultiline">
-                <DxItem name="undo" />
-                <DxItem name="redo" />
-                <DxItem name="separator" />
-                <DxItem :accepted-values="sizeValues" name="size" />
-                <DxItem :accepted-values="fontValues" name="font" />
-                <DxItem name="separator" />
-                <DxItem name="bold" />
-                <DxItem name="italic" />
-                <DxItem name="strike" />
-                <DxItem name="underline" />
-                <DxItem name="separator" />
-                <DxItem name="alignLeft" />
-                <DxItem name="alignCenter" />
-                <DxItem name="alignRight" />
-                <DxItem name="alignJustify" />
-                <DxItem name="separator" />
-                <DxItem name="orderedList" />
-                <DxItem name="bulletList" />
-                <DxItem name="separator" />
-                <DxItem :accepted-values="headerValues" name="header" />
-                <DxItem name="separator" />
-                <DxItem name="color" />
-                <DxItem name="background" />
-                <DxItem name="separator" />
-                <DxItem name="link" />
-                <DxItem name="image" />
-                <DxItem name="separator" />
-                <DxItem name="clear" />
-                <DxItem name="codeBlock" />
-                <DxItem name="blockquote" />
-                <DxItem name="separator" />
-                <DxItem name="insertTable" />
-                <DxItem name="deleteTable" />
-                <DxItem name="insertRowAbove" />
-                <DxItem name="insertRowBelow" />
-                <DxItem name="deleteRow" />
-                <DxItem name="insertColumnLeft" />
-                <DxItem name="insertColumnRight" />
-                <DxItem name="deleteColumn" />
-              </DxToolbar>
-            </DxHtmlEditor>
-            <div class="options">
-              <div class="caption">Options</div>
-              <div class="option">
-                <DxCheckBox v-model="isMultiline" text="Multiline toolbar" />
+            <!-- Etiqueta de categoria -->
+            <b-form-group
+              label="Categoria:"
+              label-for="categoria-input"
+              invalid-feedback="categoria is required"
+            >
+              <!-- input para la categoria -->
+              <b-form-select
+                v-model="form.seleccion"
+                :options="opciones"
+                class="form-select mb-3"
+                style="width: 100%"
+              >
+                <!-- This slot appears above the options from 'options' prop -->
+                <template #first>
+                  <b-form-select-option :value="null" disabled
+                    >-- Selecciona una categoria --</b-form-select-option
+                  >
+                </template>
+              </b-form-select>
+            </b-form-group>
+
+            <!-- Creamos toolbar de la herramienta devextreme -->
+            <div>
+              <DxHtmlEditor
+                v-model="form.texto"
+                :placeholder="msg"
+                height="300px"
+              >
+                <DxMediaResizing :enabled="true" />
+                <DxToolbar :multiline="isMultiline">
+                  <DxItem name="undo" />
+                  <DxItem name="redo" />
+                  <DxItem name="separator" />
+                  <DxItem :accepted-values="sizeValues" name="size" />
+                  <DxItem :accepted-values="fontValues" name="font" />
+                  <DxItem name="separator" />
+                  <DxItem name="bold" />
+                  <DxItem name="italic" />
+                  <DxItem name="strike" />
+                  <DxItem name="underline" />
+                  <DxItem name="separator" />
+                  <DxItem name="alignLeft" />
+                  <DxItem name="alignCenter" />
+                  <DxItem name="alignRight" />
+                  <DxItem name="alignJustify" />
+                  <DxItem name="separator" />
+                  <DxItem name="orderedList" />
+                  <DxItem name="bulletList" />
+                  <DxItem name="separator" />
+                  <DxItem :accepted-values="headerValues" name="header" />
+                  <DxItem name="separator" />
+                  <DxItem name="color" />
+                  <DxItem name="background" />
+                  <DxItem name="separator" />
+                  <DxItem name="link" />
+                  <DxItem name="image" />
+                  <DxItem name="separator" />
+                  <DxItem name="clear" />
+                  <DxItem name="codeBlock" />
+                  <DxItem name="blockquote" />
+                  <DxItem name="separator" />
+                  <DxItem name="insertTable" />
+                  <DxItem name="deleteTable" />
+                  <DxItem name="insertRowAbove" />
+                  <DxItem name="insertRowBelow" />
+                  <DxItem name="deleteRow" />
+                  <DxItem name="insertColumnLeft" />
+                  <DxItem name="insertColumnRight" />
+                  <DxItem name="deleteColumn" />
+                </DxToolbar>
+              </DxHtmlEditor>
+              <div class="options">
+                <div class="caption">Options</div>
+                <div class="option">
+                  <DxCheckBox v-model="isMultiline" text="Multiline toolbar" />
+                </div>
               </div>
             </div>
-          </div>
-          <!-- aqui termina el textbox con toolbar -->
-         </b-form>
+            <!-- aqui termina el textbox con toolbar -->
+          </b-form>
+        </b-row>
         <!-- Footer para el modal -->
         <template #modal-footer>
           <div
@@ -156,7 +160,13 @@
             <!-- Titulo del footer -->
             <strong>The ComicCave</strong>
             <!-- Agregamos boton publicar -->
-            <b-button type="submit" variant="danger" size="sm">
+            <b-button
+              type="submit"
+              variant="danger"
+              size="sm"
+              :disabled="disableIfOneFieldIsEmpty"
+              @click="onSubmit()"
+            >
               <b-icon
                 icon="chat-square-dots-fill"
                 scale="0.7"
@@ -179,7 +189,7 @@
 <script>
 // importaciones para la BD
 import { db } from "../firebase";
-import { reactive } from 'vue'
+import { reactive } from "vue";
 import { collection, addDoc } from "firebase/firestore/lite";
 // importaciones para la toolbar
 import {
@@ -199,36 +209,16 @@ export default {
     DxCheckBox,
   },
   name: "Forum",
-  // agregar datos a cloud Firebase
-   setup() {
-        const form = reactive({ 
-            autor: '', 
-            titulo: '',
-            seleccion: '',
-            texto: ''
-            })
-        const onSubmit = async () => {
-            const docRef = await addDoc(collection(db,'temas'),{ ...form })
-            form.autor = ''
-            form.titulo = ''
-            form.seleccion = ''
-            form.texto = ''
-            console.log("Document written with ID: ", docRef.id);
-        }
-        return { form, onSubmit }
-    },
   data() {
     return {
-      form: [],
-      onSubmit:[],
+      form: {
+        autor: "",
+        titulo: "",
+        seleccion: null,
+        texto: "",
+      },
       msg: "escribe aquí tu pregunta / aporte / discusión:",
-      seleccion: null,
       labelTextVariant: "dark",
-      opciones: [
-        { value: "A", text: "Option A" },
-        { value: "B", text: "Option B" },
-        { value: "C", text: "General" },
-      ],
       //inicia toolbar
       sizeValues: ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt"],
       fontValues: [
@@ -247,6 +237,21 @@ export default {
       //termina toolbar
     };
   },
+  computed: {
+    opciones() {
+      const options = [
+        { value: "A", text: "DC" },
+        { value: "B", text: "MARVEL" },
+        { value: "C", text: "General" },
+      ];
+      return options;
+    },
+    disableIfOneFieldIsEmpty() {
+      return Object.values(this.form).some(
+        (value) => value == null || (Array.isArray(value) && value.length === 0)
+      );
+    },
+  },
   methods: {
     showModal() {
       this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
@@ -254,12 +259,57 @@ export default {
     hideModal() {
       this.$refs["modal"].hide();
     },
+    showMsgOk() {
+      const h = this.$createElement;
+      // Using HTML string
+      const titleVNode = h("div", { domProps: { innerHTML: "Notificación" } });
+      // More complex structure
+      const messageVNode = h("div", { class: ["foobar"] }, [
+        h("p", { class: ["text-center"] }, [
+          h("b-icon", {
+            props: {
+              icon: "cloud-check-fill",
+              scale: "3",
+            },
+          }),
+          h("br"),
+          h("br"),
+          h("strong", "Datos Guardados Correctamente!"),
+          h("br"),
+        ]),
+      ]);
+      // We must pass the generated VNodes as arrays
+      this.$bvModal.msgBoxOk([messageVNode], {
+        title: [titleVNode],
+        buttonSize: "sm",
+        centered: true,
+        msgBoxOkVariant: "success"
+      });
+    },
+    async onSubmit() {
+      try {
+        const docRef = await addDoc(collection(db, "temas"), {
+          autor: this.form.autor,
+          titulo: this.form.titulo,
+          seleccion: this.form.seleccion,
+          texto: this.form.texto,
+        });
+
+        console.log("Document written with ID: ", docRef.id);
+        console.log(this.form);
+        this.hideModal();
+        this.showMsgOk();
+        (this.form.autor = ""),
+          (this.form.titulo = ""),
+          (this.form.seleccion = ""),
+          (this.form.texto = "");
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-  
 };
-
 </script>
-
 
 <style scoped>
 .contenedor {
@@ -316,5 +366,8 @@ p {
 
 .option {
   margin-top: 8px;
+}
+.btn-sombra {
+  box-shadow: 0 4px 0 #02583f;
 }
 </style>

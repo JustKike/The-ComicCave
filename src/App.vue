@@ -1,5 +1,5 @@
 <template>
-  <div id="App">
+  <div id="app">
     <!-- Agregamos el componente cabecera -->
     <Cabecera></Cabecera>
     <!-- Agregamos Barra de navegacion responsiba-->
@@ -44,7 +44,7 @@ import Footer from "@/components/Footer.vue";
 
 // llamamos al los componentes
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     Cabecera,
     Login,
