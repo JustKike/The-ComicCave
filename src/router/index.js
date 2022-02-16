@@ -40,6 +40,24 @@ const routes = [{
             import ( /* webpackChunkName: "SuperH" */ "../views/categoria/SuperH.vue"),
     },
     {
+        path: "/Marvel",
+        name: "Marvel",
+        component: () =>
+            import ( /* webpackChunkName: "KingThor */ "../views/categoria/Marvel.vue"),
+    },
+    {
+        path: "/DC",
+        name: "DC",
+        component: () =>
+            import ( /* webpackChunkName: "KingThor */ "../views/categoria/DC.vue"),
+    },
+    {
+        path: "/Otros",
+        name: "Otros",
+        component: () =>
+            import ( /* webpackChunkName: "KingThor */ "../views/categoria/Otros.vue"),
+    },
+    {
         path: "/forum",
         name: "Forum",
         component: () =>
