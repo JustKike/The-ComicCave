@@ -26,7 +26,7 @@ library.add(faUserSecret, faTwitter, faInstagram, faFacebook, faLinkedin, faYout
 
 //Add icon component
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.config.productionTip = false;
+
 // BootstrapVue disponible para todo el proyecto
 Vue.use(BootstrapVue);
 // Componentes de iconos BootstrapVue plugin
@@ -41,7 +41,6 @@ import '@/assets/styles.css';
 
 //importamos estilos devextreme para toolbar
 import 'devextreme/dist/css/dx.light.css';
-
 
 
 // Instancia de vue

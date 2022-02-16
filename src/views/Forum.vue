@@ -32,6 +32,10 @@
         ></b-icon>
         Agregar Tema</b-button
       >
+      <!-- Listamos los temas -->
+      <hr>
+      <Tema class="mt-5"/>
+
       <!-- Creamos un modal -->
       <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
         <!-- Iniciamos un formulario handleSubmit onSubmit-->
@@ -187,6 +191,8 @@
 </template>
 
 <script>
+// Importamos componente tema = lista de cards
+import Tema from '@/components/Tema.vue'
 // importaciones para la BD
 import { db } from "../firebase";
 import { reactive } from "vue";
@@ -207,6 +213,7 @@ export default {
     DxToolbar,
     DxItem,
     DxCheckBox,
+    Tema
   },
   name: "Forum",
   data() {
@@ -240,9 +247,9 @@ export default {
   computed: {
     opciones() {
       const options = [
-        { value: "A", text: "DC" },
-        { value: "B", text: "MARVEL" },
-        { value: "C", text: "General" },
+        "DC",
+        "MARVEL",
+        "General"
       ];
       return options;
     },
@@ -293,9 +300,8 @@ export default {
           titulo: this.form.titulo,
           seleccion: this.form.seleccion,
           texto: this.form.texto,
+          date: Date.now()
         });
-
-        console.log("Document written with ID: ", docRef.id);
         console.log(this.form);
         this.hideModal();
         this.showMsgOk();
