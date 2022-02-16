@@ -2,10 +2,15 @@
     <div>
         <h1>Esto es una Publicacion</h1>
         <h1></h1>
+
         <h1></h1>
+
         <h1></h1>
+
         <h1></h1>
+
         <p></p>
+        
         <router-link :to="'/Forum/'">
             <button class="btn btn-primary">atras</button>
         </router-link>
