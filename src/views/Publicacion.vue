@@ -1,33 +1,53 @@
 <template>
-  <div class="contenedor centrado m-5"
+<!-- contenedor de la publicacion -->
+  <div class="mb-3">
+    <!-- boton para volver atras -->
+    <router-link :to="'/Forum/'">
+      <button class="btn btn-primary button mt-5">atras</button>
+    </router-link>
+    <div
+      class="contenedor centrado m-5"
       style="
         background-color: white;
         background-repeat: no-repeat;
         transform: translate3d(0px, 0px, 0px);
         background-size: 100% 100%;
-      ">
-    <h1>{{ titulo }}</h1>
-    <h2>{{ categoria }}</h2>
-    <h3>{{ autor }} - {{ date }}</h3>
-    <div class="container">
-    <p>{{ parrafo }}</p>
+      "
+    >
+    <!-- Titulo de la publicacion -->
+      <h1>{{ titulo }}</h1>
+      <!-- Categoria -->
+      <h2>{{ categoria }}</h2>
+      <!-- autor de la publicacion -->
+      <h3>{{ autor }} - {{ date }}</h3>
+      <!-- texto de la publicacion -->
+      <div class="container mb-5">
+        <p>{{ parrafo }}</p>
+      </div>
     </div>
-
-    <router-link :to="'/Forum/'">
-      <button class="btn btn-primary button">atras</button>
-    </router-link>
+    <!-- boton mostrar modal para comentarios -->
+      <b-button
+        @click="modalShow = !modalShow"
+        variant="info"
+        class="button" block
+      >
+        Comentarios
+      </b-button>
+    <!-- modal de comentarios -->
+    <b-modal v-model="modalShow" size="lg">
+      <Comments></Comments>
+    </b-modal>
   </div>
 </template>
 
 <script>
-import { reactive, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
 import { db } from "@/firebase";
-import { collection, updateDoc } from "firebase/firestore/lite";
 import { doc, getDoc, query, where, onSnapshot } from "firebase/firestore/lite";
-import router from "../router/index";
+import Comments from "@/components/Comments.vue";
+
 export default {
   name: "Edit",
+  components: { Comments },
   data() {
     return {
       publicacion: [],
@@ -37,6 +57,7 @@ export default {
       date: "",
       autor: "",
       parrafo: "",
+      modalShow: false,
     };
   },
   methods: {
@@ -86,6 +107,7 @@ export default {
   position: relative;
   display: block;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.404);
 }
 h3 {
   margin: 40px 0 0;
@@ -109,14 +131,12 @@ p {
   color: rgb(10, 10, 10);
   font-weight: 100;
   text-shadow: 2px 5px 8px #030000;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   width: 100%;
 }
 .button {
-  position: relative;
   display: block;
   margin: 0 auto;
-  align-items: center;
-  margin-bottom: 10px;
+  align-items: center;;
 }
 </style>
