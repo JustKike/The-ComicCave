@@ -118,9 +118,9 @@ h1 {
   font-family: "lust-display-didone", serif;
   text-align: left;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 28px;
   width: 100%;
-  letter-spacing: 0.4rem;
+  letter-spacing: 0.3rem;
   color: rgb(3, 44, 105);
   text-shadow: 2px 5px 8px #030000;
   margin: 1rem 2rem 0;
