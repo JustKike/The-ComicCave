@@ -42,7 +42,7 @@
 
 <script>
 import { db } from "@/firebase";
-import { doc, getDoc, query, where, onSnapshot } from "firebase/firestore/lite";
+import { doc, getDoc } from "firebase/firestore/lite";
 import Comments from "@/components/Comments.vue";
 
 export default {

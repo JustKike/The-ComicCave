@@ -3,8 +3,7 @@ import { initializeApp } from "firebase/app";
 import "firebase/firestore";
 import { getFirestore } from 'firebase/firestore/lite';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuracion de la BD
 const firebaseConfig = {
     apiKey: "AIzaSyBtKcmOXMNMXrtM8rYI_HMj-tsYC2YIqXI",
     authDomain: "the-comiccave.firebaseapp.com",

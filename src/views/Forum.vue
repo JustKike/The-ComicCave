@@ -33,8 +33,8 @@
         Agregar Tema</b-button
       >
       <!-- Listamos los temas -->
-      <hr>
-      <Tema class="mt-5"/>
+      <hr />
+      <Tema class="mt-5" />
 
       <!-- Creamos un modal -->
       <b-modal id="modal-1" ref="modal" size="lg" title="AGREGA UN TEMA!">
@@ -192,7 +192,7 @@
 
 <script>
 // Importamos componente tema = lista de cards
-import Tema from '@/components/Tema.vue'
+import Tema from "@/components/Tema.vue";
 // importaciones para la BD
 import { db } from "../firebase";
 import { reactive } from "vue";
@@ -213,7 +213,7 @@ export default {
     DxToolbar,
     DxItem,
     DxCheckBox,
-    Tema
+    Tema,
   },
   name: "Forum",
   data() {
@@ -245,14 +245,12 @@ export default {
     };
   },
   computed: {
+    // opciones para el selector
     opciones() {
-      const options = [
-        "DC",
-        "MARVEL",
-        "General"
-      ];
+      const options = ["DC", "MARVEL", "General"];
       return options;
     },
+    // boton deshabalitado si no se llena por completo el formulario
     disableIfOneFieldIsEmpty() {
       return Object.values(this.form).some(
         (value) => value == null || (Array.isArray(value) && value.length === 0)
@@ -260,15 +258,18 @@ export default {
     },
   },
   methods: {
+    // mostrar ventana modal
     showModal() {
       this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
     },
+    //Ocultar ventana modal
     hideModal() {
       this.$refs["modal"].hide();
     },
+    // ventana de notificacion para cargar datos a BD
     showMsgOk() {
       const h = this.$createElement;
-      // Using HTML string
+      // Titulo para la ventana emergente
       const titleVNode = h("div", { domProps: { innerHTML: "Notificación" } });
       // More complex structure
       const messageVNode = h("div", { class: ["foobar"] }, [
@@ -290,9 +291,10 @@ export default {
         title: [titleVNode],
         buttonSize: "sm",
         centered: true,
-        msgBoxOkVariant: "success"
+        msgBoxOkVariant: "success",
       });
     },
+    // cargar datos a la BD
     async onSubmit() {
       try {
         const docRef = await addDoc(collection(db, "temas"), {
@@ -300,11 +302,15 @@ export default {
           titulo: this.form.titulo,
           seleccion: this.form.seleccion,
           texto: this.form.texto,
-          date: Date.now()
+          date: Date.now(),
         });
+        // imprimimos por consola el array de los datos
         console.log(this.form);
+        // ocultamos el modal del formulario
         this.hideModal();
+        // llamamos a la ventana emergente
         this.showMsgOk();
+        // limpiamos los imputs del formulario
         (this.form.autor = ""),
           (this.form.titulo = ""),
           (this.form.seleccion = ""),

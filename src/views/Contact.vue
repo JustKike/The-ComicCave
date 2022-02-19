@@ -1,18 +1,19 @@
 <template>
-    <div class="contact">
-        <Form></Form>
-    </div>
+  <!-- contenedor -->
+  <div class="contact">
+    <!-- componente formulario -->
+    <Form></Form>
+  </div>
 </template>
 
 <script>
-import Form from '@/components/Form.vue';
-
-export default{
-name: 'contact',
-components: {
-
-    Form
-}
-
-}
+// importamos el componente formulario
+import Form from "@/components/Form.vue";
+// Agregamos el componente al template
+export default {
+  name: "contact",
+  components: {
+    Form,
+  },
+};
 </script>

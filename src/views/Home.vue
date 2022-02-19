@@ -23,7 +23,6 @@
 // Importamos componentes
 import HelloWorld from "@/components/HelloWorld.vue";
 import Cabecera from "@/components/Cabecera.vue";
-import Cliplogo from "@/components/Cliplogo.vue";
 import Search from "@/components/Search.vue";
 import Card from "@/components/Card.vue";
 import Comic from "@/components/Comic.vue";
@@ -34,7 +33,6 @@ export default {
   components: {
     HelloWorld,
     Cabecera,
-    Cliplogo,
     Search,
     Card,
     Comic

@@ -1,7 +1,7 @@
 <template>
+<!-- Contendor -->
   <div class="justify-content-between">
     <div class="row ">
-
       <!-- incia el tema -->
       <div class="col-sm-6 mb-3" v-for="(item, id) in publicacion" :key="id" >
         <div class="card" style=" height: 340px">
@@ -14,22 +14,22 @@
                 </p>
             </div>
             <!-- boton para ver la publicacion completa -->
+            <!-- mandamos el id del documento en la Coleccion de la BD -->
             <router-link :to="`/Publicacion/${item.id}`">
             <button class="btn btn-primary btn-sombra">Ver Tema</button>
             </router-link>
-            <!-- <router-link :to="`/edit/${item.id}`"> 
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </router-link> -->
             <!-- footer de la tarjeta -->
             <div class="card-footer mt-2 d-flex justify-content-between">
                 <div class="row justify-content-start">
                     <div class="col-2">
+                      <!-- imagen de usuario autor de la publicacion -->
                         <b-card-img
                             src="../img/profile-man.png"
                             img-alt="Card Image"
                             class="rounded-circle img"
                         ></b-card-img>
                     </div>
+                    <!-- nombre del autor y fecha de publicacion -->
                     <div class="col-4">
                         <label class="fw-normal">{{ item.autor }}</label><br />
                         <label class="fw-normal"
@@ -38,6 +38,7 @@
                         >
                     </div>
                 </div>
+                <!-- Seccion para nomero de comentarios de la publicacion -->
                 <div class="col-2 justify-content-end">
                     <label class="fw-normal m-2">No.Comentarios </label>
                     <b-icon
@@ -69,6 +70,7 @@ export default {
     };
   },
   methods: {
+    // leemos los datos de la BD
     async obtenerDatos() {
       try {
         const querySnapshot = await getDocs(collection(db, "temas"));
@@ -84,12 +86,9 @@ export default {
         console.log(error);
       }
     },
-    // async deleteUser(id){
-    //   await deleteDoc(doc(db, "temas", id ));
-    //   router.go('/')
-    // },
   },
   mounted() {
+    // llamamos al metodo obtener datos
     this.obtenerDatos();
   },
 };
