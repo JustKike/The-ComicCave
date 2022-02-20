@@ -1,19 +1,17 @@
 <template>
 <!-- contenedor de la publicacion -->
   <div class="mb-3">
-    <!-- boton para volver atras -->
-    <router-link :to="'/Forum/'">
-      <button class="btn btn-primary button mt-5">atras</button>
-    </router-link>
     <div
       class="contenedor centrado m-5"
       style="
         background-color: white;
-        background-repeat: no-repeat;
         transform: translate3d(0px, 0px, 0px);
-        background-size: 100% 100%;
-      "
+        background-size: 100% 100%;"
     >
+    <!-- boton para volver atras -->
+    <router-link :to="'/Forum/'" style="float: right;">
+      <button class="btn btn-dark button">atras</button>
+    </router-link>
     <!-- Titulo de la publicacion -->
       <h1>{{ titulo }}</h1>
       <!-- Categoria -->
@@ -21,18 +19,19 @@
       <!-- autor de la publicacion -->
       <h3>{{ autor }} - {{ date }}</h3>
       <!-- texto de la publicacion -->
-      <div class="container mb-5">
+      <div class="container mt-5">
         <p>{{ parrafo }}</p>
       </div>
-    </div>
-    <!-- boton mostrar modal para comentarios -->
-      <b-button
+      <!-- boton mostrar modal para comentarios -->
+      <b-button block 
         @click="modalShow = !modalShow"
-        variant="info"
-        class="button" block
+        variant="primary"
+        class="button mt-3"
       >
         Comentarios
       </b-button>
+    </div>
+    
     <!-- modal de comentarios -->
     <b-modal v-model="modalShow" size="lg">
       <Comments></Comments>
@@ -104,13 +103,20 @@ export default {
 
 <style scoped>
 .centrado {
-  position: relative;
-  display: block;
   text-align: center;
+  padding: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.404);
+  padding: 30px;
+}
+h2{
+  color: rgb(250, 3, 3);
+  font-family: Book Antiqua;
+  text-align: left;
 }
 h3 {
-  margin: 40px 0 0;
+  color: rgb(8, 8, 8);
+  font-family: Book Antiqua;
+  text-align: left;
 }
 h1 {
   font-family: "lust-display-didone", serif;
@@ -120,7 +126,7 @@ h1 {
   width: 100%;
   letter-spacing: 0.5rem;
   color: rgb(105, 10, 3);
-  text-shadow: 2px 5px 8px #030000;
+  text-shadow: 2px 5px 8px #030000b9;
 }
 p {
   position: relative;
@@ -130,13 +136,17 @@ p {
   margin: auto;
   color: rgb(10, 10, 10);
   font-weight: 100;
-  text-shadow: 2px 5px 8px #030000;
+  text-shadow: 2px 5px 8px #030000a8;
   margin-bottom: 5px;
   width: 100%;
 }
 .button {
-  display: block;
   margin: 0 auto;
-  align-items: center;;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.815);
+
+}
+.light hover {
+  background: #e7e7e7;
 }
 </style>
