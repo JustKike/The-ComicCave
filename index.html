@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/The-ComicCave/favicon.ico"><title>the-comiccave</title><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><link href="/The-ComicCave/css/About.af6b636a.css" rel="prefetch"><link href="/The-ComicCave/css/CienciaF.906b56a7.css" rel="prefetch"><link href="/The-ComicCave/css/Forum.3f6e1c1d.css" rel="prefetch"><link href="/The-ComicCave/css/Home.4c448f4c.css" rel="prefetch"><link href="/The-ComicCave/css/Home~SuperH.95957f58.css" rel="prefetch"><link href="/The-ComicCave/css/Publicacion.96e38545.css" rel="prefetch"><link href="/The-ComicCave/css/Releases.9ac21788.css" rel="prefetch"><link href="/The-ComicCave/css/SuperH.b13edecb.css" rel="prefetch"><link href="/The-ComicCave/css/chunk-210cfec2.4b4cae7e.css" rel="prefetch"><link href="/The-ComicCave/css/chunk-3e01084a.434bf84c.css" rel="prefetch"><link href="/The-ComicCave/css/chunk-e541843e.da60f05b.css" rel="prefetch"><link href="/The-ComicCave/js/About.22af9dfb.js" rel="prefetch"><link href="/The-ComicCave/js/CienciaF.deae9542.js" rel="prefetch"><link href="/The-ComicCave/js/Contact.b6981e15.js" rel="prefetch"><link href="/The-ComicCave/js/Forum.1234f310.js" rel="prefetch"><link href="/The-ComicCave/js/Forum~Publicacion.16fcb351.js" rel="prefetch"><link href="/The-ComicCave/js/Home.5972ae29.js" rel="prefetch"><link href="/The-ComicCave/js/Home~SuperH.0b82d51e.js" rel="prefetch"><link href="/The-ComicCave/js/Publicacion.e02cc212.js" rel="prefetch"><link href="/The-ComicCave/js/Releases.21557469.js" rel="prefetch"><link href="/The-ComicCave/js/SuperH.da45bf3e.js" rel="prefetch"><link href="/The-ComicCave/js/chunk-210cfec2.4ff1b2b2.js" rel="prefetch"><link href="/The-ComicCave/js/chunk-3e01084a.0315b2da.js" rel="prefetch"><link href="/The-ComicCave/js/chunk-e541843e.f3873939.js" rel="prefetch"><link href="/The-ComicCave/css/app.7e0e5873.css" rel="preload" as="style"><link href="/The-ComicCave/css/chunk-vendors.c84c6400.css" rel="preload" as="style"><link href="/The-ComicCave/js/app.5ac98960.js" rel="preload" as="script"><link href="/The-ComicCave/js/chunk-vendors.257f0b8c.js" rel="preload" as="script"><link href="/The-ComicCave/css/chunk-vendors.c84c6400.css" rel="stylesheet"><link href="/The-ComicCave/css/app.7e0e5873.css" rel="stylesheet"></head><body class="contenedor-color dx-viewport"><noscript><strong>We're sorry but the-comiccave doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none">Top<span></span></a><div id="app"></div><script src="/The-ComicCave/js/chunk-vendors.257f0b8c.js"></script><script src="/The-ComicCave/js/app.5ac98960.js"></script></body></html><script>// script para el boton ir arriba
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $("#scroll").fadeIn();
+            } else {
+                $("#scroll").fadeOut();
+            }
+        });
+        $("#scroll").click(function() {
+            $("html, body").animate({
+                    scrollTop: 0,
+                },
+                600
+            );
+            return false;
+        });
+    });</script><style>/* css para el boton ir arriba */
+    
+    #scroll {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background-color: #3498db;
+        text-indent: -9999px;
+        display: none;
+        -webkit-border-radius: 60px;
+        -moz-border-radius: 60px;
+        border-radius: 60px;
+    }
+    
+    #scroll span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -12px;
+        height: 0;
+        width: 0;
+        border: 8px solid transparent;
+        border-bottom-color: #ffffff;
+    }
+    
+    #scroll:hover {
+        background-color: #e74c3c;
+        opacity: 1;
+        filter: "alpha(opacity=100)";
+        -ms-filter: "alpha(opacity=100)";
+    }
+    
+    .contenedor-color {
+        background-color: rgb(231, 228, 228);
+    }</style>
