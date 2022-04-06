@@ -35,7 +35,7 @@ export default {
   //concatenamos el nombre la imagen con el url
   computed: {
     srcText() {
-      return "../img/" + this.dir;
+      return "@/img/" + this.dir;
     },
   },
 };
