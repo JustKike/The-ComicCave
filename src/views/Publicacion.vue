@@ -62,7 +62,7 @@ export default {
   methods: {
     async obtenerDatos() {
       try {
-        const id = window.location.pathname.split("/")[2];
+        const id = window.location.pathname.split("/")[3];
         this.id = id;
         console.log("dato:", this.id);
 
@@ -73,6 +73,7 @@ export default {
           publicacion.push(docSnap.data());
           this.publicacion = publicacion;
           console.log("datos:", publicacion);
+          console.log("id:", id);
           this.agregar(publicacion);
         };
 
