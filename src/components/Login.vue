@@ -18,6 +18,10 @@
       title="Sidebar"
       aria-label="Sidebar with custom footer"
       no-header bg-variant="dark">
+      <!-- Estatus de inicio de sesion -->
+      <div class="d-flex bg-primary  text-light d-flex justify-content-center px-3 py-2">
+        <top-header></top-header>
+      </div>
       <!-- Agregamos un footer -->
       <template #footer="{ hide }">
         <div
@@ -33,7 +37,7 @@
         <!-- Agregagmos una contenedor tipo carta -->
         <b-card class="mt-3" header="Inicia Sesion">
           <!-- Creamos el formulario de inicio de sesion -->
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
             <!-- Agrupamos los complementos -->
             <b-form-group
               id="input-group-1"
@@ -88,9 +92,11 @@
 <script>
   // importamos el modal Join
   import Join from "./Join.vue";
+  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+  import TopHeader from "./Top-Header.vue";
 
   export default {
-    components: { Join },
+    components: { Join, TopHeader },
     name: "Login",
     data() {
       return {
@@ -99,13 +105,32 @@
           email: "",
           password: "",
         },
+        error: '',
         show: true,
       };
     },
     methods: {
-      onSubmit(event) {
+      async onSubmit(event) {
         event.preventDefault();
-        alert(JSON.stringify(this.form));
+        // Nos salta una alerta con los datos del formulario
+        // alert(JSON.stringify(this.form));
+        try {
+                const auth = getAuth();
+                await signInWithEmailAndPassword(auth, this.form.email, this.form.password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                    alert(user.email + " logeado con exito!");
+                })
+                 // Reset our form values
+                this.form.email = "";
+                this.form.password = "";
+                // Redirecciona a Home
+                this.$router.replace({name: "Home"});
+                }catch (err){
+                    console.log(err);
+                }
+
       },
       onReset(event) {
         event.preventDefault();
@@ -128,4 +153,9 @@
 .shadow{
   text-shadow: 2px 2px 4px #030000;
 }
+
+.error {
+        color: red;
+        font: size 18px;
+    }
 </style>

@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import "firebase/firestore";
 import { getFirestore } from 'firebase/firestore/lite';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-// Configuracion de la BD
+
 const firebaseConfig = {
     apiKey: "AIzaSyBtKcmOXMNMXrtM8rYI_HMj-tsYC2YIqXI",
     authDomain: "the-comiccave.firebaseapp.com",
@@ -15,7 +16,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 //Creamos una constante db y la exportamos
 export const db = getFirestore(app);
