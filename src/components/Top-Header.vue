@@ -4,7 +4,7 @@
         <span v-if="loggedIn">Yes</span>
         <span v-else>No</span>
         <div>
-            <b-button @click="signOut" variant="outline-dark" pill size="sm">Sign Out</b-button>
+            <b-button @click="signOut" v-if="show" variant="outline-dark" pill size="sm">Sign Out</b-button>
         </div>
     </div>
 </template>
@@ -21,7 +21,12 @@ export default {
                 const auth = getAuth();
                 onAuthStateChanged(auth, (user) => {
                     this.loggedIn = !!user;
-                    console.log("Este usuario ha iniciado sesion", user.email);
+                    if (this.loggedIn = !!user) {
+                         return this.show = true;
+                        console.log("Este usuario ha iniciado sesion", user.email);
+                    }else{
+                         return this.show = false;
+                    }
                 })
                 // Redireccion a otra pagina
                 this.$router.replace({name: "Home"});
@@ -32,7 +37,8 @@ export default {
     },
     data(){
         return{
-            loggedIn: false
+            loggedIn: false,
+            show: true,
         }
     },
     methods: {

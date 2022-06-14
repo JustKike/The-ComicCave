@@ -3,13 +3,13 @@
     <!-- Agregamos un contenedor -->
     <div class="mb-2">
       <!-- Agregamos boton iniciar sesion para mostrar barra lateral -->
-      <b-button
+      <b-button 
         pill
         variant="primary"
         v-b-toggle
         href="#example-sidebar"
         @click.prevent>
-        Inicio | Registro
+        {{btnNme}}
         </b-button>
     </div>
     <!-- Agregamos barra lateral -->
@@ -35,9 +35,9 @@
       <!-- Agregamos contenedor -->
       <div class="px-3 py-2">
         <!-- Agregagmos una contenedor tipo carta -->
-        <b-card class="mt-3" header="Inicia Sesion">
+        <b-card class="mt-3" :state="comprobar" header="Inicia Sesion" v-if="show">
           <!-- Creamos el formulario de inicio de sesion -->
-          <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
+          <b-form @submit.prevent="onSubmit" @reset="onReset" >
             <!-- Agrupamos los complementos -->
             <b-form-group
               id="input-group-1"
@@ -81,9 +81,15 @@
         </b-card>
       </div>
       <!-- Agregamos un contenedor para modal Crear cuenta -->
-      <div class="px-3 py-2">
+      <div class="px-3 py-2" :state="comprobar" v-if="show">
         <join></join>
       </div>
+      <!-- Modulo para mostrar datos de usuario -->
+      <div class="px-3 py-2">
+      <b-card class="mt-3" :state="!comprobar" header="Datos de Usuario" v-if="!show">
+      </b-card>
+      </div>
+
     </b-sidebar>
     <!-- Final de la barra lateral -->
   </div>
@@ -107,6 +113,7 @@
         },
         error: '',
         show: true,
+        btnNme: ''
       };
     },
     methods: {
@@ -143,6 +150,24 @@
           this.show = true;
         });
       },
+    },
+    computed: {
+      comprobar(){
+        try {
+          const requiresAuth = true;
+          const auth = getAuth();
+          const isAuthenticated = auth.currentUser;
+          if (requiresAuth && !isAuthenticated) {
+              return this.show = true,
+              this.btnNme = "Inicio | Registro";
+          } else {
+              return this.show = false,
+              this.btnNme = "Mas";
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
     },
   };
 </script>

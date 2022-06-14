@@ -5,27 +5,27 @@
     <form>
       <b-col md="6">
         <b-row>
-          <medium>Nombre</medium>
+           <label for="text-name">Nombre</label>
           <b-form-input
-            name="nombre"
+           id="text-name" aria-describedby="name-help-block"
             v-model="form.nombre"
             :state="comprobar"
             placeholder="Escribe tu nombre"
           ></b-form-input>
-          <small>Al menos 3 caracteres</small>
+            <b-form-text id="name-help-block">Al menos 3 caracteres</b-form-text>
         </b-row>
         <p></p>
         <b-row>
-          <medium>Correo</medium>
-          <b-form-input name="email" v-model="form.email"></b-form-input>
+          <label for="text-email">Correo</label>
+          <b-form-input id="text-email"  v-model="form.email"></b-form-input>
         </b-row>
         <p></p>
 
         <b-row>
-          <medium>Comentario</medium>
+          <label for="text-comment">Comentario</label>
           <textarea
             class="form-control"
-            name="coment"
+            id="text-comment"
             v-model="form.coment"
             placeholder="Escribe tu comentario"
           ></textarea>
@@ -67,7 +67,9 @@ export default {
     try {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
-        this.form.email = user.email; //user.uid para el id de usuario
+        if (user != null){
+          this.form.email = user.email; //user.uid para el id de usuario
+        }
       });
     } catch (err) {
       console.log(err);
