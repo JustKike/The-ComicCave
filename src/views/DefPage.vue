@@ -1,11 +1,11 @@
 <template>
 <!-- Agregamos estructura al componente -->
-  <div class="centrado">
-    <b-jumbotron bg-variant="light" text-variant="white"  class="p-4">
+  <div class="centrado w-100">
+    <b-jumbotron bg-variant="light" text-variant="white"  class="p-4 w-100">
       <!-- Agregamos un titulo -->
       <h1>{{ msg }}</h1>
       <!-- Agregamos un parrafo -->
-      <p>Incia sesion o crea un usuario para disfrutar de los mejores Comics en buena calidad</p>
+      <p>Inicia sesion o crea un usuario para disfrutar de los mejores Comics en buena calidad y acceso al foro con nuestra comunidad</p>
     </b-jumbotron>
   </div>
 </template>
@@ -13,11 +13,13 @@
 <script>
 // Configuracion de mi componente
 export default {
-  name: "Bienvenido",
-  props: {
-    msg: String,
-  },
-};
+  name: "DefPage",
+  data(){
+    return {
+        msg: "BIENVENIDO A THE COMICCAVE"
+          };
+    }
+}
 </script>
 
 <style scoped>
@@ -25,6 +27,7 @@ export default {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    width: auto;
   }
   h1 {
     font-family: "lust-display-didone", serif;

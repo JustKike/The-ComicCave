@@ -31,8 +31,6 @@
     <b-container>
       <router-view />
     </b-container>
-    <!-- componente de titulo manda un msj dentro de una variable si hay sesion iniciada -->
-    <Bienvenido :state="comprobar" msg="BIENVENIDO A THE COMICCAVE" v-if="show" />
     <!-- pie de pagina -->
     <Footer></Footer>
   </div>
@@ -43,8 +41,6 @@
 import Cabecera from "@/components/Cabecera.vue";
 import Login from "@/components/Login.vue";
 import Footer from "@/components/Footer.vue";
-import Bienvenido from "@/components/Bienvenido.vue";
-import { getAuth } from "firebase/auth";
 
 // llamamos al los componentes
 export default {
@@ -52,7 +48,6 @@ export default {
   components: {
     Cabecera,
     Login,
-    Bienvenido,
     Footer
   },
   data() {
@@ -60,22 +55,6 @@ export default {
       show: true,
     }
   },
-  computed: {
-      comprobar(){
-        try {
-          const requiresAuth = true;
-          const auth = getAuth();
-          const isAuthenticated = auth.currentUser;
-          if (requiresAuth && !isAuthenticated) {
-              return this.show = true;
-          } else {
-              return this.show = false;
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    },
 };
 
 </script>

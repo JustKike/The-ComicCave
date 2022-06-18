@@ -66,7 +66,6 @@ export default {
       event.preventDefault();
       // Nos salta una alerta con los datos del formulario
       // alert(JSON.stringify(this.form));
-
       try {
         const auth = getAuth();
         await createUserWithEmailAndPassword(

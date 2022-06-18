@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import "firebase/firestore";
 import { getFirestore } from 'firebase/firestore/lite';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 
 const firebaseConfig = {

@@ -4,23 +4,24 @@
     <div class="mb-2">
       <!-- Agregamos boton iniciar sesion para mostrar barra lateral -->
       <b-button 
-        pill
+        pill 
         variant="primary"
         v-b-toggle
         href="#example-sidebar"
         @click.prevent>
-        {{btnNme}}
+        <span v-if="btnNme">+ informacion</span>
+        <span v-else>Inicio | Registro</span>
         </b-button>
     </div>
     <!-- Agregamos barra lateral -->
-    <b-sidebar 
+    <b-sidebar v-show="sidebar"
       id="example-sidebar"
       title="Sidebar"
       aria-label="Sidebar with custom footer"
       no-header bg-variant="dark">
       <!-- Estatus de inicio de sesion -->
       <div class="d-flex bg-primary  text-light d-flex justify-content-center px-3 py-2">
-        <top-header></top-header>
+        <top-header :onClick="sampleFunction"></top-header>
       </div>
       <!-- Agregamos un footer -->
       <template #footer="{ hide }">
@@ -35,9 +36,9 @@
       <!-- Agregamos contenedor -->
       <div class="px-3 py-2">
         <!-- Agregagmos una contenedor tipo carta -->
-        <b-card class="mt-3" :state="comprobar" header="Inicia Sesion" v-if="show">
+        <b-card class="mt-3" header="Inicia Sesion" v-show="component">
           <!-- Creamos el formulario de inicio de sesion -->
-          <b-form @submit.prevent="onSubmit" @reset="onReset" >
+          <b-form @submit.prevent="onSubmit" @reset="onReset">
             <!-- Agrupamos los complementos -->
             <b-form-group
               id="input-group-1"
@@ -76,17 +77,27 @@
               <b-button type="submit" variant="primary">Enviar</b-button>|
               <b-button type="reset" variant="danger">Cancelar</b-button>
             </div>
+            <!-- botones para iniciar sesion con google o facebook -->
+            <div class="mt-4 d-block">
+              <b-button style="width: 100%" variant="outline-primary" @click.prevent="onFacebook()">
+                <b-icon scale="1.3" shift-h="-24" icon="facebook"></b-icon> Sign In with Facebook
+              </b-button>
+              <b-button class="mt-2" style="width: 100%" variant="danger" 
+              id="googleLogin" @click.prevent="onGoogle()">
+                <b-icon shift-h="-30" icon="google"></b-icon> Sign In with Google
+              </b-button>
+           </div>
           </b-form>
           <!-- Termina el formulario -->
         </b-card>
-      </div>
+        </div>
       <!-- Agregamos un contenedor para modal Crear cuenta -->
-      <div class="px-3 py-2" :state="comprobar" v-if="show">
+      <div class="px-3 py-2" v-show="component">
         <join></join>
       </div>
       <!-- Modulo para mostrar datos de usuario -->
       <div class="px-3 py-2">
-      <b-card class="mt-3" :state="!comprobar" header="Datos de Usuario" v-if="!show">
+      <b-card class="mt-3" header="Datos de Usuario"  v-show="!component">
       </b-card>
       </div>
 
@@ -98,7 +109,8 @@
 <script>
   // importamos el modal Join
   import Join from "./Join.vue";
-  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, 
+  GoogleAuthProvider, signInWithPopup, FacebookAuthProvider   } from "firebase/auth";
   import TopHeader from "./Top-Header.vue";
 
   export default {
@@ -113,7 +125,9 @@
         },
         error: '',
         show: true,
-        btnNme: ''
+        sidebar: true,
+        component: true,
+        btnNme: false
       };
     },
     methods: {
@@ -150,24 +164,90 @@
           this.show = true;
         });
       },
+      sampleFunction(){
+        //ocultar sidebar
+        return this.sidebar = false;
     },
-    computed: {
-      comprobar(){
+    // mostrar u ocultar componentes de inicio/resgistro de sesion 
+    // y datos de usuario
+    comprobar(){
         try {
           const requiresAuth = true;
           const auth = getAuth();
           const isAuthenticated = auth.currentUser;
           if (requiresAuth && !isAuthenticated) {
-              return this.show = true,
-              this.btnNme = "Inicio | Registro";
+              this.component = true;
           } else {
-              return this.show = false,
-              this.btnNme = "Mas";
+              this.component = false;
           }
         } catch (err) {
           console.log(err);
         }
+      },
+      //Google login
+      onGoogle(event){
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+        signInWithPopup(auth, provider)
+        .then((result) =>{
+          console.log("Google sign in");
+          try {
+                // Redirecciona a Home
+                this.$router.replace({name: "Home"});
+                }catch (err){
+                    console.log(err);
+                }
+        }).catch((error) =>{
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+        })
+      },
+      //Facebook login
+      onFacebook(event){
+        const provider = new FacebookAuthProvider ();
+        const auth = getAuth();
+        signInWithPopup(auth, provider)
+        .then((result) => {
+           console.log(result);
+           console.log("Facebook sign in");
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+
+            // ...
+          });
       }
+  },
+    created() {
+      try {
+            // comprobar si hay un usuario logeado
+            const auth = getAuth();
+            onAuthStateChanged(auth, (user) => {
+                this.btnNme = !!user;
+                if (this.btnNme = !!user) {
+                      return this.show = true,
+                       this.sidebar = true,
+                       this.comprobar();
+                }else{
+                      return this.show = false,
+                      this.sidebar = true,
+                      this.comprobar();
+                }
+            })
+          } catch (err) {
+                  console.log(err);
+          }
     },
   };
 </script>
@@ -180,7 +260,13 @@
 }
 
 .error {
-        color: red;
-        font: size 18px;
-    }
+    color: red;
+    font: size 18px;
+}
+#example-sidebar li:hover {
+  
+            /* Sidebar items change color 
+            when hovered over */
+            color: green;
+        }
 </style>

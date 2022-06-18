@@ -90,6 +90,13 @@ const routes = [{
         component: () =>
             import ( /* webpackChunkName: "Publicacion" */ "../views/Publicacion.vue"),
         meta: { requiresAuth: true }
+    },
+    {
+        // ruta a pagina Publicaciones
+        path: "/DefPage",
+        name: "DefPage",
+        component: () =>
+            import ( /* webpackChunkName: "DefPage" */ "../views/DefPage.vue")
     }
 ];
 
@@ -106,7 +113,7 @@ router.beforeEach((to, from, next) => {
     const auth = getAuth();
     const isAuthenticated = auth.currentUser;
     if (requiresAuth && !isAuthenticated) {
-        next("/Home");
+        next("/DefPage");
         alert("Debes iniciar sesion!");
     } else {
         next();
