@@ -9,7 +9,7 @@
         <b-navbar-brand href="#" ></b-navbar-brand>
         <!-- Enlaces responsivos -->
         <b-collapse is-nav id="nav-collapse">
-          <b-navbar-nav>
+                  <b-navbar-nav>
             <!-- Agregamos elementos -->
             <b-nav-item :to="{ name: 'Home' }" exact>
               <!-- Agregamos un icono a home -->
@@ -29,12 +29,15 @@
     </b-navbar>
     <!-- Para llamar las rutas desde router -->
     <b-container>
-      <router-view />
+      <transition>
+      <router-view :key="$route.fullPath"></router-view>
+      </transition>
     </b-container>
     <!-- pie de pagina -->
     <Footer></Footer>
   </div>
 </template>
+
 
 <script>
 // Importamos componentes
@@ -58,3 +61,20 @@ export default {
 };
 
 </script>
+
+
+<style>
+/* Las animaciones de entrada y salida pueden usar */
+/* funciones de espera y duración diferentes.      */
+.v-enter-active {
+  transition: all .3s ease;
+}
+.v-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.v-enter, .v-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>
