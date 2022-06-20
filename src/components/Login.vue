@@ -95,12 +95,8 @@
       <div class="px-3 py-2" v-show="component">
         <join></join>
       </div>
-      <!-- Modulo para mostrar datos de usuario -->
-      <div class="px-3 py-2">
-      <b-card class="mt-3" header="Datos de Usuario"  v-show="!component">
-      </b-card>
-      </div>
-
+      <!-- Modulo para mostrar datos de usuario v-show="!component" -->
+      <Profile v-show="!component"></Profile>
     </b-sidebar>
     <!-- Final de la barra lateral -->
   </div>
@@ -109,12 +105,13 @@
 <script>
   // importamos el modal Join
   import Join from "./Join.vue";
+  import Profile from "./UserProfile.vue";
   import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, 
   GoogleAuthProvider, signInWithPopup, FacebookAuthProvider   } from "firebase/auth";
   import TopHeader from "./Top-Header.vue";
 
   export default {
-    components: { Join, TopHeader },
+    components: { Join, TopHeader, Profile },
     name: "Login",
     data() {
       return {
@@ -215,6 +212,12 @@
         .then((result) => {
            console.log(result);
            console.log("Facebook sign in");
+           try {
+                // Redirecciona a Home
+                this.$router.replace({name: "Home"});
+                }catch (err){
+                    console.log(err);
+                }
           })
           .catch((error) => {
             // Handle Errors here.

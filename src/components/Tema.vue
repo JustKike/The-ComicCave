@@ -6,11 +6,10 @@
       <div class="col-sm-6 mb-3" v-for="(item, id) in publicacion" :key="id">
         <div class="card" style="height: 350px">
           <!-- cuperpo de la tarjeta -->
-          <div class="card-body">
+          <div class="card-body" >
             <h3>{{ item.seleccion }}</h3>
             <h1 class="card-title">{{ item.titulo }}</h1>
-            <p class="card-text mb-2">
-              {{ item.texto }}
+            <p class="card-text mb-2" v-html="item.texto">
             </p>
           </div>
           <!-- boton para ver la publicacion completa -->

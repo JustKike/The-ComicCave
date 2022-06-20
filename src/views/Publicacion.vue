@@ -20,7 +20,7 @@
       <h3>{{ autor }} - {{ date }}</h3>
       <!-- texto de la publicacion -->
       <div class="container mt-5">
-        <p>{{ parrafo }}</p>
+        <p  v-html="parrafo"></p>
       </div>
       <!-- boton mostrar modal para comentarios -->
       <b-button block 
@@ -140,6 +140,8 @@ p {
   text-shadow: 2px 5px 8px #030000a8;
   margin-bottom: 5px;
   width: 100%;
+  height: auto;
+  word-wrap: break-word;
 }
 .button {
   margin: 0 auto;
