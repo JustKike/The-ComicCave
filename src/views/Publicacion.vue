@@ -105,7 +105,6 @@ export default {
 <style scoped>
 .centrado {
   text-align: center;
-  padding: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.404);
   padding: 30px;
 }
@@ -113,11 +112,13 @@ h2{
   color: rgb(250, 3, 3);
   font-family: Book Antiqua;
   text-align: left;
+  margin-left: 15px;
 }
 h3 {
   color: rgb(8, 8, 8);
   font-family: Book Antiqua;
   text-align: left;
+  margin-left: 15px;
 }
 h1 {
   font-family: "lust-display-didone", serif;
@@ -128,6 +129,7 @@ h1 {
   letter-spacing: 0.5rem;
   color: rgb(105, 10, 3);
   text-shadow: 2px 5px 8px #030000b9;
+  margin-top:25px;
 }
 p {
   position: relative;
