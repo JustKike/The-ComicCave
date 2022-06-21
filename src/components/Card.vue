@@ -5,6 +5,7 @@
     <div class="container">
       <!-- Agregamos un link a la imagen -->
       <b-link :to="{ name: liga }">
+      <b-form-rating v-model="value" variant="warning" class="mb-2"></b-form-rating>
         <!-- Insertamos imagen -->
         <b-card-img
           :src="srcText"
@@ -32,6 +33,11 @@ export default {
     dir: '',
     liga: '',
   },
+  data() {
+      return {
+        value: 3
+      }
+    },
   //concatenamos el nombre la imagen con el url
   computed: {
     srcText() {
